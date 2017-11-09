@@ -1,15 +1,18 @@
-Tables
-user
-profile
-space
-address
-amenity
-desk
+== MODELS ==
+user  Finished
 
-amenity_space
-booking
+profile Finished
+space Finished
+address Finished
+amenity Finsihed
+desk Finished
+
+amenity_space Finished
+booking Finished
 
 ============
+
+== TABLES ==
 
 address
   space_id
@@ -66,6 +69,18 @@ user
   email
   password
 
+photos
+  t.string "title"
+  t.string "content_type"
+  t.integer "user_id"
+  t.integer "article_id"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.string "image_file_name"
+  t.string "image_content_type"
+  t.integer "image_file_size"
+  t.datetime "image_updated_at"
+
 == joined below - don't scaffold ===
 
 space_amenity
@@ -91,3 +106,20 @@ $ rails g scaffold User email:string password:string
 == joined below - don't scaffold ===
 
 $ rails g model SpaceAmenity amenity_id:integer space_id:integer
+
+
+=========
+
+git@github.com:4rlm/share_space.git
+
+  $ git remote add origin git@github.com:4rlm/share_space.git
+
+
+t.string "username"
+t.string "email", null: false
+t.string "password_digest", null: false
+t.string "role", default: "standard"
+
+
+
+create sessions
