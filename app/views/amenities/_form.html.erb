@@ -1,0 +1,92 @@
+<%= form_with(model: amenity, local: true) do |form| %>
+  <% if amenity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(amenity.errors.count, "error") %> prohibited this amenity from being saved:</h2>
+
+      <ul>
+      <% amenity.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :accessibility %>
+    <%= form.text_field :accessibility, id: :amenity_accessibility %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bike_rack %>
+    <%= form.text_field :bike_rack, id: :amenity_bike_rack %>
+  </div>
+
+  <div class="field">
+    <%= form.label :coffee %>
+    <%= form.text_field :coffee, id: :amenity_coffee %>
+  </div>
+
+  <div class="field">
+    <%= form.label :computer %>
+    <%= form.text_field :computer, id: :amenity_computer %>
+  </div>
+
+  <div class="field">
+    <%= form.label :kitchen %>
+    <%= form.text_field :kitchen, id: :amenity_kitchen %>
+  </div>
+
+  <div class="field">
+    <%= form.label :locked_door %>
+    <%= form.text_field :locked_door, id: :amenity_locked_door %>
+  </div>
+
+  <div class="field">
+    <%= form.label :monitor %>
+    <%= form.text_field :monitor, id: :amenity_monitor %>
+  </div>
+
+  <div class="field">
+    <%= form.label :parking %>
+    <%= form.text_field :parking, id: :amenity_parking %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pet_friendly %>
+    <%= form.text_field :pet_friendly, id: :amenity_pet_friendly %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.text_field :phone, id: :amenity_phone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price, id: :amenity_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :printer %>
+    <%= form.text_field :printer, id: :amenity_printer %>
+  </div>
+
+  <div class="field">
+    <%= form.label :shower %>
+    <%= form.text_field :shower, id: :amenity_shower %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tv %>
+    <%= form.text_field :tv, id: :amenity_tv %>
+  </div>
+
+  <div class="field">
+    <%= form.label :wifi %>
+    <%= form.text_field :wifi, id: :amenity_wifi %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

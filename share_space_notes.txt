@@ -1,0 +1,93 @@
+Tables
+user
+profile
+space
+address
+amenity
+desk
+
+amenity_space
+booking
+
+============
+
+address
+  space_id
+  street
+  unit
+  city
+  state
+  zip
+  country
+
+
+amenity
+  accessibility
+  bike_rack
+  coffee
+  computer
+  kitchen
+  locked_door
+  monitor
+  parking
+  pet_friendly
+  phone
+  price
+  printer
+  shower
+  tv
+  wifi
+
+
+booking
+  datetime
+  desk_id
+  user_id
+
+
+desk
+  space_id
+
+
+profile
+  user_id
+  first_name
+  last_name
+  phone
+
+
+space
+  name
+  website
+  phone
+  user_id
+
+user
+  email
+  password
+
+== joined below - don't scaffold ===
+
+space_amenity
+  amenity_id
+  space_id
+
+=========== END ================
+
+$ rails g scaffold Address space_id:integer street:string unit:string city:string state:string zip:string country:string
+
+$ rails g scaffold Amenity accessibility:string bike_rack:string coffee:string computer:string kitchen:string locked_door:string monitor:string parking:string pet_friendly:string phone:string price:string printer:string shower:string tv:string wifi:string
+
+$ rails g scaffold Booking booking_date:datetime desk_id:integer user_id:integer
+
+$ rails g scaffold Desk space_id:integer
+
+$ rails g scaffold Profile user_id:integer first_name:string last_name:string phone:string
+
+$ rails g scaffold Space name:string website:string phone:string user_id:integer
+
+$ rails g scaffold User email:string password:string
+
+== joined below - don't scaffold ===
+
+$ rails g model SpaceAmenity amenity_id:integer space_id:integer

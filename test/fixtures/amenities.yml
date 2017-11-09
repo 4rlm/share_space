@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  accessibility: MyString
+  bike_rack: MyString
+  coffee: MyString
+  computer: MyString
+  kitchen: MyString
+  locked_door: MyString
+  monitor: MyString
+  parking: MyString
+  pet_friendly: MyString
+  phone: MyString
+  price: MyString
+  printer: MyString
+  shower: MyString
+  tv: MyString
+  wifi: MyString
+
+two:
+  accessibility: MyString
+  bike_rack: MyString
+  coffee: MyString
+  computer: MyString
+  kitchen: MyString
+  locked_door: MyString
+  monitor: MyString
+  parking: MyString
+  pet_friendly: MyString
+  phone: MyString
+  price: MyString
+  printer: MyString
+  shower: MyString
+  tv: MyString
+  wifi: MyString

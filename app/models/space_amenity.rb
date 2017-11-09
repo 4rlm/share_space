@@ -1,0 +1,2 @@
+class SpaceAmenity < ApplicationRecord
+end
