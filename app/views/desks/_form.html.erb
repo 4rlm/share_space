@@ -1,4 +1,4 @@
-<%= form_with(model: desk, local: true) do |form| %>
+<%= form_with(model: desk, remote: true) do |form| %>
   <% if desk.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(desk.errors.count, "error") %> prohibited this desk from being saved:</h2>
