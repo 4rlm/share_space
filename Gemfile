@@ -52,3 +52,21 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+
+# Adam's Gems
+gem 'pry'
+# Use hirb for rails c table view.  Then in rails c:
+gem 'hirb'
+# require 'hirb'
+# Hirb.enable
+gem 'aws-sdk', '< 2.0'
+gem 'paperclip', '~> 4.3', '>= 4.3.6'
+# Use jquery as the JavaScript library
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+# gem 'bootstrap', '~> 4.0.0.beta2'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+gem 'font-awesome-sass', '~> 4.7.0'
+gem 'pg_search'
+gem 'stripe'
