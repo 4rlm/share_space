@@ -1,29 +1,33 @@
-<p id="notice"><%= notice %></p>
-
-<h3>Users</h3>
 <div class="row">
-<table class="table table-bordered table-hover table-striped text-nowrap">
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Password</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @users.each do |user| %>
+  <table class="table table-bordered table-hover table-striped text-nowrap">
+    <thead>
       <tr>
-        <td><%= user.email %></td>
-        <td><%= user.password %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Username <%= icon('user') %></th>
+        <th>Email <%= icon('envelope') %></th>
+        <th>Updated <%= icon('calendar') %></th>
+        <th colspan="2">Manage <%= icon('sliders') %></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.username.capitalize, user %></td>
+        <td><%= user.email %></td>
+        <td><%= user.updated_at.strftime('%x') %></td>
+
+        <td><%= link_to edit_user_path(user) do %>
+          <%= icon('pencil-square-o') %>
+          <% end %>
+        </td>
+
+        <td><%= link_to 'Destroy', user, remote: true, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%#= link_to 'New User', new_user_path, class: "btn btn-info" %>
 
 </div>
-
-<%= link_to 'New User', new_user_path, class: "btn btn-success" %>
