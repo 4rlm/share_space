@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #Create amenities
+Amenity.create({name: "accessibility"})
 Amenity.create({name: "bike_rack"})
 Amenity.create({name: "coffee"})
 Amenity.create({name: "computer"})
@@ -44,7 +45,7 @@ Amenity.create({name: "wifi"})
   new_space = Space.create!({
     name: Faker::Company.name,
     description: Faker::Company.catch_phrase,
-    website: "https://youtu.be/dQw4w9WgXcQ",
+    website: Faker::Internet.url,
     phone: Faker::PhoneNumber.phone_number,
     user_id: User.all.sample.id
     })
@@ -60,11 +61,12 @@ Amenity.create({name: "wifi"})
   })
 
   rand(2..10).times do
-    SpaceAmenity.create!({
+    SpaceAmenity.find_or_create_by({
       space_id: new_space.id,
       amenity_id: Amenity.all.sample.id
     })
    end
+
 end
 
 #Create desks for spaces
