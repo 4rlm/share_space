@@ -1,5 +1,7 @@
 class SpacesController < ApplicationController
   before_action :set_space, only: [:show, :edit, :update, :destroy]
+  skip_before_action :require_login, only: [:index, :show]
+
 
   # GET /spaces
   # GET /spaces.json

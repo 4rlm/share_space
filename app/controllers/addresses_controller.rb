@@ -1,5 +1,7 @@
 class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :edit, :update, :destroy]
+  skip_before_action :require_login, only: [:index, :show]
+
 
   # GET /addresses
   # GET /addresses.json

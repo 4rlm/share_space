@@ -1,5 +1,7 @@
 class AmenitiesController < ApplicationController
   before_action :set_amenity, only: [:show, :edit, :update, :destroy]
+  skip_before_action :require_login, only: [:index, :show]
+
 
   # GET /amenities
   # GET /amenities.json

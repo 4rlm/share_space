@@ -1,5 +1,7 @@
 class DesksController < ApplicationController
   before_action :set_desk, only: [:show, :edit, :update, :destroy]
+  skip_before_action :require_login, only: [:index, :show]
+
 
   # GET /desks
   # GET /desks.json
