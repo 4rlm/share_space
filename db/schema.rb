@@ -28,21 +28,7 @@ ActiveRecord::Schema.define(version: 20171109214540) do
   end
 
   create_table "amenities", force: :cascade do |t|
-    t.string "accessibility"
-    t.string "bike_rack"
-    t.string "coffee"
-    t.string "computer"
-    t.string "kitchen"
-    t.string "locked_door"
-    t.string "monitor"
-    t.string "parking"
-    t.string "pet_friendly"
-    t.string "phone"
-    t.string "price"
-    t.string "printer"
-    t.string "shower"
-    t.string "tv"
-    t.string "wifi"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
