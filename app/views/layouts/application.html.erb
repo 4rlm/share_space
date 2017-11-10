@@ -10,11 +10,22 @@
 
   <body>
 
+    <%# if user_signed_in? %>
+      <%= render partial: 'layouts/nav' %>
+    <%# end %>
 
-    <!-- YIELD (HERE IS WHERE EACH VIEW ERB FROM CONTROLLERS/VIEWS WILL RENDER) -->
-    <div class="row" id="main-wrapper">
+    <div id="main-wrapper" class="container-fluid outer-container">
+      <%= render partial: 'layouts/flash' %>
       <%= yield %>
     </div>
+
+  </body>
+
+<!-- Footer -->
+<div class="footer text-center">
+  <h4>Developed by The Austonites &copy 2017</h4>
+</div>
+
 
 
 
