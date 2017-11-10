@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group field">
     <%= form.label :booking_date %>
-    <%= form.datetime_select :booking_date, id: :booking_booking_date %>
+    <%= form.datetime_select :booking_date, id: :booking_booking_date, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="field form-group field">
     <%= form.label :desk_id %>
-    <%= form.number_field :desk_id, id: :booking_desk_id %>
+    <%= form.number_field :desk_id, id: :booking_desk_id, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="field form-group field">
     <%= form.label :user_id %>
-    <%= form.number_field :user_id, id: :booking_user_id %>
+    <%= form.number_field :user_id, id: :booking_user_id, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-success pull-right' %>
   </div>
 <% end %>

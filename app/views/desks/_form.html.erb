@@ -11,12 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group field">
     <%= form.label :space_id %>
-    <%= form.number_field :space_id, id: :desk_space_id %>
+    <%= form.number_field :space_id, id: :desk_space_id, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-success pull-right'  %>
   </div>
 <% end %>
