@@ -1,33 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ShareSpace</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>ShareSpace</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 <body id="page-top" class="">
 
- <%= render partial: 'layouts/nav' %>
+  <%= render partial: 'shared/nav' %>
 
+  <div id="main-wrapper" class="container-fluid outer-container">
+    <%= render partial: 'shared/flash' %>
+    <%= render partial: 'shared/main/main_index' %>
+    <%= yield %>
+  </div>
 
-
- <div id="main-wrapper" class="container-fluid outer-container">
-  <%= render partial: 'layouts/flash' %>
-  <%= yield %>
-</div>
-
-
-
-
-
-<%= render partial: 'layouts/main' %>
-
-<div id="main-wrapper" class="container-fluid outer-container">
-  <%= render partial: 'layouts/flash' %>
-  <%= yield %>
-</div>
 
 </body>
 
