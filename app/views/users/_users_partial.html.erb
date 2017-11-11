@@ -22,7 +22,10 @@
           <% end %>
         </td>
 
-        <td><%= link_to 'Destroy', user, remote: true, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to user, remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <%= icon('trash') %>
+          <% end %>
+        </td>
 
       </tr>
       <% end %>

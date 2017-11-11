@@ -8,7 +8,7 @@
       <th>First name</th>
       <th>Last name</th>
       <th>Phone</th>
-      <th>Edit</th>
+      <th>Manage <%= icon('sliders') %></th>
     </tr>
   </thead>
 
@@ -17,7 +17,12 @@
       <td><%= @profile.first_name %></td>
       <td><%= @profile.last_name %></td>
       <td><%= @profile.phone %></td>
-      <td><%= link_to 'Edit', edit_profile_path(@profile) %></td>
+
+      <td><%= link_to edit_profile_path(@profile) do %>
+        <%= icon('pencil-square-o') %>
+        <% end %>
+      </td>
+
     </tr>
   </tbody>
 </table>

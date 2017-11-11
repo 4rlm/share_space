@@ -10,25 +10,31 @@
       <th>Website</th>
       <th>Phone</th>
       <th>User</th>
-      <th colspan="3"></th>
+      <th colspan="2">Manage <%= icon('sliders') %></th>
     </tr>
   </thead>
 
   <tbody>
     <% @spaces.each do |space| %>
       <tr>
-        <td><%= space.name %></td>
+        <td><%= link_to space.name, space %></td>
         <td><%= space.website %></td>
         <td><%= space.phone %></td>
-        <td><%= space.user_id %></td>
-        <td><%= link_to 'Show', space %></td>
-        <td><%= link_to 'Edit', edit_space_path(space) %></td>
-        <td><%= link_to 'Destroy', space, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to space.user.username, space.user %></td>
+
+        <td><%= link_to edit_space_path(space) do %>
+          <%= icon('pencil-square-o') %>
+          <% end %>
+        </td>
+
+        <td><%= link_to space, remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <%= icon('trash') %>
+          <% end %>
+        </td>
+
       </tr>
     <% end %>
   </tbody>
 </table>
 
 </div>
-
-<%= link_to 'New Space', new_space_path, class: "btn btn-success" %>

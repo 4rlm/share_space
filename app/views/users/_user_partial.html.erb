@@ -15,7 +15,7 @@
 
       </tr>
       <tr>
-        <td><%= user.username.capitalize %></td>
+        <td><%= link_to user.username.capitalize, user %></td>
         <td><%= user.email %></td>
         <td><%= user.updated_at.strftime('%x')%></td>
 
@@ -25,43 +25,17 @@
             <% end %>
           </td>
 
-          <td><%= link_to 'Destroy', user, remote: true, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to user, remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <%= icon('trash') %>
+            <% end %>
+          </td>
+
         <%# end %>
 
       </tr>
     </table>
   </div>
-  <div id="#userProperties" class="row">
-    <%= link_to "List New Space", new_space_path, class: "btn btn-success"%>
 
-    <% if @spaces.length > 0 %>
-    <br><br>
-      <table class="table table-bordered table-hover table-striped text-nowrap">
-        <tr>
-          <th>Space Name</th>
-          <th>Created</th>
-          <th>Updated</th>
-          <th>Manage</th>
-          <th>Delete</th>
-        </tr>
-
-        <% @spaces.each do |space| %>
-          <tr>
-            <td> <%= link_to "#{space.name}", space %> </td>
-            <td> <%= space.created_at.strftime('%x')%> </td>
-            <td> <%= space.updated_at.strftime('%x')%> </td>
-            <td> <%= link_to "Edit", edit_space_path(space), class:"btn btn-success btn-block" %> </td>
-            <td> <%= link_to 'Delete', space, class:"btn btn-danger btn-block", method: :delete, data: { confirm: 'Are you sure? This will remove all associated desks and current bookings. This process is not reversible.'} %> </td>
-          </tr>
-        <%end%>
-      </table>
-    <% end %>
-
-
-
-
-
-  </div>
 
   <div id="userProfileArea" class="row">
     <% if user.profile %>
@@ -73,9 +47,12 @@
   </div>
 
 
-
-
-
-
+  <div id="#userProperties" class="row">
+    <% if user.spaces && user.spaces.count > 0 %>
+      <% @spaces = user.spaces %>
+      <%= render 'spaces/spaces_partial', spaces: @spaces %>
+    <% end %>
+    <%= link_to 'New Space', new_space_path, class: "btn btn-success pull-right" %>
+  </div>
 
 </div>
