@@ -9,10 +9,29 @@
   </div>
 </header> -->
 
-<section class="home-hero parallax--bg">
+<!-- <section class="fullscreen-img-section">
 	<div class="container">
+
+<%#= image_tag "office1.jpg" %>
 		<h3 class="title parallax--box">EXPLORE THE WORLD </h3>
 <h4>We're here to make the remarkable happen.</h4>
 		<a href="" class="button button-accent">MAKE A RESERVATION</a>
 	</div>
+</section> -->
+
+
+<section class="v-header container">
+  <div class="fullscreen-video-wrap">
+    <%= video_tag "office_video.mp4", autoplay: :autoplay, loop: :loop, mute: :mute, class: "video" %>
+  </div>
+
+  <div class="header-overlay"></div>
+
+  <div class="header-content text-md-center">
+    <h1>Flexible Office. Fast.</h1>
+    <p>Rent high quality office space, for any budget from the largest workspace network.</p>
+
+    <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#portfolio">Tell Me More</a>
+  </div>
+
 </section>

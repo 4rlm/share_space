@@ -12,10 +12,12 @@
  *
  *= require_tree .
  *= require_self
- *= require agency.min
+ * require agency.min // adam commented this out and replaced with below (@import "theme/agency.scss")
  */
 
 // @import 'bootstrap-sprockets';
 @import 'bootstrap';
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
+@import "theme/agency.scss"; // adam replaced agency.min with this, so each theme scss file can be compiled properly.
