@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   get 'home/index'
   root :to => "home#index"
 
-  resources :addresses, :amenities, :bookings, :desks, :profiles, :sessions, :spaces, :users
+
+  # root to: 'photos#index'
+  # resources :photos, only: [:new, :create, :index, :destroy]
+
+  resources :addresses, :amenities, :bookings, :desks, :photos, :profiles, :sessions, :spaces, :users
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

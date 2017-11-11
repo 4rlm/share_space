@@ -1,0 +1,33 @@
+<%= form_with(model: photo, remote: true) do |f| %>
+<%#= form_with(url: photos_path, remote: true) do |f| %>
+  <%= render 'shared/errors', object: @photo %>
+
+    <div class="row form-group field">
+      <%= f.label :title %>
+      <%= f.text_field :title, id: :title_field, placeholder: 'photo title', class: 'form-control' %>
+    </div>
+
+    <div class="row form-group field">
+      <%= f.label :image %>
+      <%= f.file_field :image, id: :file_field, class: 'form-control'%>
+    </div>
+
+  <% if @space %>
+    <%= f.hidden_field :space_id, :value => @space.id %>
+    <%= f.hidden_field :user_id, :value => @space.user_id %>
+  <% elsif @user %>
+    <%= f.hidden_field :space_id, :value => 1 %> <!-- FOR TESTING ONLY -->
+    <%= f.hidden_field :user_id, :value => @user.id %>
+  <% elsif @current_user %>
+    <%= f.hidden_field :space_id, :value => 1 %> <!-- FOR TESTING ONLY -->
+    <%= f.hidden_field :user_id, :value => @current_user.id %>
+  <% end %>
+
+  <!-- FOR TESTING ONLY -->
+
+    <div class="row actions">
+      <%= f.submit 'Upload', class: 'btn btn-success btn-sm'  %>
+    </div>
+
+
+<% end %>
