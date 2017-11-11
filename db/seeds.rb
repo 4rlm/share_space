@@ -85,10 +85,3 @@ end
     user_id: User.all.sample.id
     })
 end
-
-
-
-
-
-
-
