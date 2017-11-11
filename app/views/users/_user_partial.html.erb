@@ -51,7 +51,7 @@
             <td> <%= space.created_at.strftime('%x')%> </td>
             <td> <%= space.updated_at.strftime('%x')%> </td>
             <td> <%= link_to "Edit", edit_space_path(space), class:"btn btn-success btn-block" %> </td>
-            <td> <%= link_to 'Delete', space, class:"btn btn-danger btn-block", method: :delete, data: { confirm: 'Are you sure? This will remove all associated desks and current bookings. This is not reversible.'} %> </td>
+            <td> <%= link_to 'Delete', space, class:"btn btn-danger btn-block", method: :delete, data: { confirm: 'Are you sure? This will remove all associated desks and current bookings. This process is not reversible.'} %> </td>
           </tr>
         <%end%>
       </table>
