@@ -63,6 +63,19 @@
 
   </div>
 
+  <div id="userProfileArea" class="row">
+    <% if user.profile %>
+      <% @profile = user.profile %>
+      <%= render partial: 'profiles/profile_partial', profile: @profile %>
+    <% else %>
+      <%= render 'profiles/form', profile: Profile.new %>
+    <% end %>
+  </div>
+
+
+
+
+
 
 
 </div>

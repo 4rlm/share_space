@@ -31,6 +31,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        @profile = Profile.find_or_create_by(user_id: @user.id)
+
         session[:user_id] = @user.id
         format.html { redirect_to @user, notice: 'Thank you for signing up!' }
         format.json { render :show, status: :created, location: @user }
