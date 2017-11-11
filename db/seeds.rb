@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
 #Create amenities
 Amenity.create({name: "accessibility"})
 Amenity.create({name: "bike_rack"})
@@ -23,6 +24,12 @@ Amenity.create({name: "shower"})
 Amenity.create({name: "tv"})
 Amenity.create({name: "wifi"})
 
+#Create Admin
+admin = User.create(username: 'admin', email: 'admin', password: 'admin', role: 'admin')
+admin_profile = Profile.find_or_initialize_by({ first_name: 'Admin', last_name: 'Admin', phone: '512-216-1234'})
+admin_profile.user = admin
+admin_profile.save!
+# binding.pry
 
 #Create 15 users w/ profiles
 15.times do

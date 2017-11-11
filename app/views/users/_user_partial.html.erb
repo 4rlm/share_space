@@ -1,7 +1,7 @@
 <div class="container">
 
 
-  <div id="userProfile" class="row">
+  <div class="row" id="userProfile">
     <table class="table table-bordered table-hover table-striped text-nowrap">
       <tr>
         <th>Username <%= icon('user') %></th>
@@ -37,22 +37,60 @@
   </div>
 
 
-  <div id="userProfileArea" class="row">
-    <% if user.profile %>
+  <div class="row" id="userProfileArea">
       <% @profile = user.profile %>
       <%= render partial: 'profiles/profile_partial', profile: @profile %>
-    <% else %>
-      <%= render 'profiles/form', profile: Profile.new %>
-    <% end %>
   </div>
 
 
-  <div id="#userProperties" class="row">
+
+  <div class="row" id="#userProperties">
     <% if user.spaces && user.spaces.count > 0 %>
       <% @spaces = user.spaces %>
       <%= render 'spaces/spaces_partial', spaces: @spaces %>
     <% end %>
-    <%= link_to 'New Space', new_space_path, class: "btn btn-success pull-right" %>
+    <%= link_to 'New Space', new_space_path, class: "btn btn-success btn-xs pull-right" %>
   </div>
+
+
+  <!-- <div id="#userPhotos" class="row"> -->
+    <!-- <h3>Photos: <%#= @photos.count %></h3> -->
+    <!-- PARTIAL LINK TO PHOTOS/INDEX (VIEW ALL) -->
+    <%#= render 'photos/photos_partial', photos: user.photos %>
+  <!-- </div> -->
+
+
+
+  <!-- USER PROFILE AVATAR SECTION -->
+  <div class="row" id="user-image-gallery">
+
+    <!-- VIEW PHOTOS -->
+    <% if @user.photos %>
+    <% photos = @user.photos %>
+      <% photos.each do |photo| %>
+        <div id="user-photo">
+          <%= link_to image_tag(photo.image.url(:thumb)), photo.image.url, target: '_blank', width: 175 %><br>
+          <% if @current_user && (@current_user == @user || @current_user.role == "admin") %>
+
+            <%= link_to photo, remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <%= icon('trash') %>
+            <% end %>
+
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <div class="row" id="user-image-gallery-text">
+      <!-- UPLOAD AVATARS TO USER PROFILE (ONLY ADMIN AND USER) -->
+      <% if @current_user && (@current_user == @user || @current_user.role == "admin") %>
+        <%= render partial: 'photos/upload_image_modal', user: @user %>
+      <% end %>
+    </div>
+
+  </div>
+
+
+
 
 </div>
