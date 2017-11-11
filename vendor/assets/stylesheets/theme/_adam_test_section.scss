@@ -1,0 +1,23 @@
+/* hero-home
+=================== */
+
+.home-hero {
+  background: blue;
+	// background-image: url(../img/office1.jpg); //adam
+  // eventually, we will load assets the rails way with rails img routes.
+	background-size: cover;
+	background-position: center;
+	padding: 10em 0;
+	color: #FFF;
+}
+
+@media (min-width: 60rem) {
+	.home-hero {
+		height: 100vh;
+		padding-top: 35vh;
+	}
+}
+
+
+/* hero-home
+=================== */

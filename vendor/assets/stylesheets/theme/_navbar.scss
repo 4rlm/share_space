@@ -8,7 +8,8 @@
     text-transform: uppercase;
     color: white;
     border: 0;
-    background-color: $primary;
+    background-color: #212529; //adam
+    // background-color: $primary;
     @include heading-font;
   }
   .navbar-brand {
@@ -46,7 +47,8 @@
     -moz-transition: padding-top 0.3s, padding-bottom 0.3s;
     transition: padding-top 0.3s, padding-bottom 0.3s;
     border: none;
-    background-color: transparent;
+    // background-color: transparent;
+    background-color: #212529; //adam
     .navbar-brand {
       font-size: 1.75em;
       -webkit-transition: all 0.3s;
