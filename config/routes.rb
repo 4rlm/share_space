@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   # root to: 'photos#index'
   # resources :photos, only: [:new, :create, :index, :destroy]
 
+  resources :spaces do
+    collection { post :search, to: 'spaces#index' }
+  end
+
   resources :addresses, :amenities, :bookings, :desks, :photos, :profiles, :sessions, :spaces, :users
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
