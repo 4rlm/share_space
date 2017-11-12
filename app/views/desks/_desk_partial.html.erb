@@ -3,5 +3,10 @@
   <%= @desk.space_id %>
 </p>
 
+<p>
+  <strong>Description:</strong>
+  <%= @desk.description %>
+</p>
+
 <%= link_to 'Edit', edit_desk_path(@desk) %> |
 <%= link_to 'Back', desks_path %>

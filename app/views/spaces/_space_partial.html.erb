@@ -32,8 +32,15 @@
     <% if @current_user && (@current_user == @space.user || @current_user.role == "admin") %>
         <%= render partial: 'addresses/add_address_modal' %>
     <%end%>
-  </div>
+</div>
 
+<% if @desks.count > 0 %>
+  <h2>Desks</h2>
+  <% @desks.each do |desk|%>
+    <% @desk = desk %>
+    <%= render partial: 'desks/desk_partial', desk: @desk %>
+  <%end%>
+<%end%>
 
 <!-- IMAGE GALLERY FOR SPACE SHOW/DETAIL PAGE -->
 <div id="space-image-gallery">

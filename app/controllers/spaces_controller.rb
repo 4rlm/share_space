@@ -27,6 +27,7 @@ class SpacesController < ApplicationController
   # GET /spaces/1.json
   def show
     @address = Address.find_by(space_id: @space.id)
+    @desks = Desk.where(space_id: @space.id)
   end
 
   # GET /spaces/new
