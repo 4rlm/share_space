@@ -9,15 +9,6 @@
     <li><%= link_to 'Profiles', profiles_path %></li>
     <li><%= link_to 'Users', users_path %></li>
     <hr>
-
-    <% if logged_in? %>
-    <li><%= link_to @current_user.username.capitalize, user_path(@current_user) %></li>
-      <li><%= link_to 'Logout', logout_path %></li>
-    <% else %>
-      <%#= render partial: 'layouts/modal' %>
-      <li><%= link_to "Sign Up", signup_path %></li>
-      <li><%= link_to "Log In", login_path %></li>
-    <% end %>
   </ul>
 
 </div>
