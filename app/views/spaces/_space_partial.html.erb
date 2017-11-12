@@ -18,7 +18,10 @@
   <%= @space.user_id %>
 </p>
 
-
+<!-- address details and map -->
+<% if @space.address %>
+  <%= render partial: 'addresses/address_partial'%>
+<%end%>
 
 
 <%= link_to 'Edit', edit_space_path(@space) %> |
