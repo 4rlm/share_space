@@ -2,3 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#main-wrapper {
+    margin-top: 50px !important;
+}
+
+.intro-text {
+    padding-top: 100px !important;
+    padding-bottom: 50px !important;
+}
+
+.main-search {
+    padding-top: 50px;
+    padding-bottom: 0px;
+}
