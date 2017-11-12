@@ -1,39 +1,57 @@
 
+<div class="row">
 
-<p>
-  <strong>Space:</strong>
-  <%= @address.space_id %>
-</p>
+  <div class="col-md-6">
 
-<p>
-  <strong>Street:</strong>
-  <%= @address.street %>
-</p>
+    <p>
+      <strong>Space:</strong>
+      <%= @address.space_id %>
+    </p>
 
-<p>
-  <strong>Unit:</strong>
-  <%= @address.unit %>
-</p>
+    <p>
+      <strong>Street:</strong>
+      <%= @address.street %>
+    </p>
 
-<p>
-  <strong>City:</strong>
-  <%= @address.city %>
-</p>
+    <p>
+      <strong>Unit:</strong>
+      <%= @address.unit %>
+    </p>
 
-<p>
-  <strong>State:</strong>
-  <%= @address.state %>
-</p>
+    <p>
+      <strong>City:</strong>
+      <%= @address.city %>
+    </p>
 
-<p>
-  <strong>Zip:</strong>
-  <%= @address.zip %>
-</p>
+    <p>
+      <strong>State:</strong>
+      <%= @address.state %>
+    </p>
 
-<p>
-  <strong>Country:</strong>
-  <%= @address.country %>
-</p>
+    <p>
+      <strong>Zip:</strong>
+      <%= @address.zip %>
+    </p>
+
+    <p>
+      <strong>Country:</strong>
+      <%= @address.country %>
+    </p>
+
+  </div>
+
+  <div class="col-md-6">
+    <div class="row">
+      <iframe width="700" height="400" frameborder="1" style="border:1"
+       src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCMINjz6qATKxuxTc6tWNzyVehLybEYouY&zoom=17&q=<%= AddressesHelper.format_address(@address) %>"
+       allowfullscreen>
+      </iframe>
+    </div>
+
+  </div>
+
+</div>
+
 
 <%= link_to 'Edit', edit_address_path(@address) %> |
 <%= link_to 'Back', addresses_path %>
