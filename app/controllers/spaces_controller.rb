@@ -45,7 +45,7 @@ class SpacesController < ApplicationController
 
     respond_to do |format|
       if @space.save
-        format.html { redirect_to edit_space_path(@space), notice: "Space was successfully created. Let's make it pretty!" }
+        format.html { redirect_to @space, notice: "Space was successfully created. Let's make it pretty!" }
         format.json { render :show, status: :created, location: @space }
       else
         format.html { render :new }

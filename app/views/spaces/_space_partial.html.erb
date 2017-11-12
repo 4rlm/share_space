@@ -25,12 +25,11 @@
 <%= link_to 'Back', spaces_path %>
 
 <!-- Add Address modal -->
-
 <div id="add-address">
-  <% if @current_user && (@current_user == @space.user || @current_user.role == "admin") %>
-    <%= render partial: 'addresses/add_address_modal', address: @space.address %>
-  <% end %>
-</div>
+    <% if @current_user && (@current_user == @space.user || @current_user.role == "admin") %>
+        <%= render partial: 'addresses/add_address_modal' %>
+    <%end%>
+  </div>
 
 
 <!-- IMAGE GALLERY FOR SPACE SHOW/DETAIL PAGE -->

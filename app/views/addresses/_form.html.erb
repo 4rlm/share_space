@@ -1,16 +1,18 @@
 
 <%= form_with(model: address, remote: true) do |form| %>
-  <% if address.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(address.errors.count, "error") %> prohibited this address from being saved:</h2>
+  <%if address%>
+    <% if address.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(address.errors.count, "error") %> prohibited this address from being saved:</h2>
 
-      <ul>
-      <% address.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+        <ul>
+        <% address.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <%end%>
 
   <% if @space %>
     <%= form.hidden_field :space_id, value: @space.id %>
