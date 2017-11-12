@@ -18,8 +18,19 @@
   <%= @space.user_id %>
 </p>
 
+
+
+
 <%= link_to 'Edit', edit_space_path(@space) %> |
 <%= link_to 'Back', spaces_path %>
+
+<!-- Add Address modal -->
+
+<div id="add-address">
+  <% if @current_user && (@current_user == @space.user || @current_user.role == "admin") %>
+    <%= render partial: 'addresses/add_address_modal', address: @space.address %>
+  <% end %>
+</div>
 
 
 <!-- IMAGE GALLERY FOR SPACE SHOW/DETAIL PAGE -->

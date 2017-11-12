@@ -12,11 +12,14 @@
     </div>
   <% end %>
 
-
-  <div class="field form-group field">
-    <%= form.label :space_id %>
-    <%= form.number_field :space_id, id: :address_space_id, class: 'form-control' %>
-  </div>
+  <% if @space %>
+    <%= form.hidden_field :space_id, value: @space.id %>
+  <%else%>
+    <div class="field form-group field">
+      <%= form.label :space_id %>
+      <%= form.number_field :space_id, id: :address_space_id, class: 'form-control' %>
+    </div>
+  <%end%>
 
   <div class="field form-group field">
     <%= form.label :street %>
