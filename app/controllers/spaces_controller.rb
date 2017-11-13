@@ -26,8 +26,14 @@ class SpacesController < ApplicationController
   # GET /spaces/1
   # GET /spaces/1.json
   def show
-    @address = Address.find_by(space_id: @space.id)
-    @desks = Desk.where(space_id: @space.id)
+    # @address = Address.find_by(space_id: @space.id)
+    # @desks = Desk.where(space_id: @space.id)
+    
+    respond_to do |format|
+      format.html # show.html.erb
+      format.js # show.js.erb
+    end
+
   end
 
   # GET /spaces/new

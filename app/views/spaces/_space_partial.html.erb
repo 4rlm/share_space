@@ -17,7 +17,8 @@
 
   <p>
     <strong>Manager:</strong>
-    <% host = User.find(@space.user_id) %>
+    <%= host = @space.user %>
+    <%# host = User.find(@space.user_id) %>
     <%= link_to host.profile.fullname, user_path(host) %>
   </p>
 
@@ -30,12 +31,17 @@
 <!-- address details and map -->
 <div class="address_details">
   <% if @space.address %>
+  <% @address = @space.address %>
   <h4>Address:</h4>
-    <%= render partial: 'addresses/address_partial'%>
+  <%#= binding.pry %>
+    <%= render 'addresses/address_partial', address: @address %>
   <%end%>
 </div>
  <!-- desks and desk details -->
 <div class="desk_details">
+  <% if @space.desks %>
+  <% @desks = @space.desks %>
+
   <% if @desks.count > 0 %>
     <h2>Desks <%= icon('cubes') %></h2>
     <% @desks.each do |desk|%>
@@ -43,6 +49,8 @@
       <%= render partial: 'desks/desk_partial', desk: @desk %><br>
     <%end%>
   <%end%>
+  <%end%>
+  
 </div>
 
 <!-- add amenities and modal for editing them -->

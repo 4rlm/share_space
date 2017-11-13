@@ -12,6 +12,12 @@ class BookingsController < ApplicationController
   # GET /bookings/1
   # GET /bookings/1.json
   def show
+    
+    respond_to do |format|
+      format.html # show.html.erb
+      format.js # show.js.erb
+    end
+
   end
 
   # GET /bookings/new
