@@ -15,12 +15,13 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @space.user_id %>
+  <strong>Manager:</strong>
+  <% host = User.find(@space.user_id) %>
+  <%= link_to host.profile.fullname, user_path(host) %>
 </p>
 
 
-<%= link_to 'Edit', edit_space_path(@space) %>
+<%= link_to 'Edit', edit_space_path(@space) %><br><br>
 <%if !@space %>
  | <%= link_to 'Back', spaces_path %>
  <%end%>
