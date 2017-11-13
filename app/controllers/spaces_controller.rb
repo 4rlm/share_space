@@ -6,12 +6,28 @@ class SpacesController < ApplicationController
   # GET /spaces
   # GET /spaces.json
   def index
-    @spaces = Space.all
+    # @spaces = Space.all
+
+    # @search = Space.search(params[:q])
+    # @spaces = @search.result
+
+
+
+    @q = Space.ransack(params[:q])
+    # @spaces = @q.result.includes(:addresses)
+    @spaces = @q.result(distinct: true).includes(:address)
+    # @q.build_condition
+
+    # or use `to_a.uniq` to remove duplicates (can also be done in the view):
+    # @people = @q.result.includes(:articles).page(params[:page]).to_a.uniq
+
   end
 
   # GET /spaces/1
   # GET /spaces/1.json
   def show
+    @address = Address.find_by(space_id: @space.id)
+    @desks = Desk.where(space_id: @space.id)
   end
 
   # GET /spaces/new
@@ -21,6 +37,7 @@ class SpacesController < ApplicationController
 
   # GET /spaces/1/edit
   def edit
+    @address = Address.find_by(space_id: @space.id)
   end
 
   # POST /spaces
@@ -30,7 +47,7 @@ class SpacesController < ApplicationController
 
     respond_to do |format|
       if @space.save
-        format.html { redirect_to @space, notice: 'Space was successfully created.' }
+        format.html { redirect_to @space, notice: "Space was successfully created. Let's make it pretty!" }
         format.json { render :show, status: :created, location: @space }
       else
         format.html { render :new }
@@ -71,6 +88,6 @@ class SpacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def space_params
-      params.require(:space).permit(:name, :website, :phone, :user_id)
+      params.require(:space).permit(:name, :website, :phone, :user_id, :description)
     end
 end

@@ -26,9 +26,53 @@
     <%= form.text_field :phone, id: :space_phone, class: 'form-control' %>
   </div>
 
+  <div class="field form-group field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :space_description, class: 'form-control' %>
+  </div>
+
+
+
+  <!-- <input id="space_amenities" name="accessibility" type="checkbox" value="accessibility"/> Accessibility
+  <input id="space_amenities" name="bike_rack" type="checkbox" value="bike_rack"/> Bike Rack
+  <input id="space_amenities" name="coffee" type="checkbox" value="coffee"/> Coffee
+  <input id="space_amenities" name="computer" type="checkbox" value="computer"/> Computer
+  <input id="space_amenities" name="kitchen" type="checkbox" value="kitchen"/> Kitchen
+   <input id="space_amenities" name="locked_door" type="checkbox" value="locked_door"/> Locked Door
+  <input id="space_amenities" name="monitor" type="checkbox" value="monitor"/> Monitor
+  <input id="space_amenities" name="parking" type="checkbox" value="parking"/> Parking
+  <input id="space_amenities" name="pet_friendly" type="checkbox" value="pet_friendly"/> Pet Friendly
+  <input id="space_amenities" name="phone" type="checkbox" value="phone"/> Phone
+  <input id="space_amenities" name="printer" type="checkbox" value="printer"/> Printer
+  <input id="space_amenities" name="shower" type="checkbox" value="shower"/> Shower
+  <input id="space_amenities" name="tv" type="checkbox" value="tv"/> TV
+  <input id="space_amenities" name="wifi" type="checkbox" value="wifi"/> WiFi -->
+  <!-- <label for="space_amenities">Coffee</label> -->
+
+
+  <!-- amenities -->
+
+<!--   <div class="form-check form-check-inline">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="accessibility"> accessibility
+    </label> -->
+ <!--  </div>
+  <div class="form-check form-check-inline">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="bike_rack"> bike_rack
+    </label>
+  </div>
+  <div class="form-check form-check-inline">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="coffee"> coffee
+    </label>
+  </div> -->
+
   <%= form.hidden_field :user_id, :value => @current_user.id %>
 
   <div class="actions">
     <%= form.submit class: 'btn btn-success pull-right' %>
   </div>
 <% end %>
+
+

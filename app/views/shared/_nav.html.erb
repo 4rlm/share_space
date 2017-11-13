@@ -8,10 +8,11 @@
         </div>
         <div class="navbar-collapse collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ml-auto">
-            <li class="nav-item"><%= link_to 'Addresses', addresses_path, class: "nav-link js-scroll-trigger"%></li>
             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Find Spaces</a></li>
             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#team">Team</a></li>
+
+            <!-- ADAM'S TESTING NAV BELOW - PLEASE KEEP DURING DEVELOPMENT STAGE -->
             <% if logged_in? %>
               <li class="nav-item"><%= link_to @current_user.username.capitalize, user_path(@current_user), class: "nav-link" %></li>
               <li class="nav-item"><%= link_to 'Logout', logout_path, class: "nav-link" %></li>
@@ -22,6 +23,15 @@
             
           </ul>
         </div>
+              <%#= render partial: 'layouts/modal' %>
+              <li class="nav-item"><%= link_to "Sign Up", signup_path, class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to "Log In", login_path, class: "nav-link" %></li>
+            <% end %>
+            <!-- ADAM'S TESTING NAV ABOVE - PLEASE KEEP DURING DEVELOPMENT STAGE -->
+
+          </ul>
+        </div>
+
       </div>
 
     </nav>

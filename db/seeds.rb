@@ -57,15 +57,15 @@ admin_profile.save!
     user_id: User.all.sample.id
     })
 
-  Address.create!({
-    space_id: new_space.id,
-    street: Faker::Address.street_address,
-    unit: Faker::Address.secondary_address,
-    city: Faker::Address.city,
-    state: Faker::Address.state,
-    zip: Faker::Address.zip,
-    country: Faker::Address.country
-  })
+  # Address.create!({
+  #   space_id: new_space.id,
+  #   street: Faker::Address.street_address,
+  #   unit: Faker::Address.secondary_address,
+  #   city: Faker::Address.city,
+  #   state: Faker::Address.state,
+  #   zip: Faker::Address.zip,
+  #   country: Faker::Address.country
+  # })
 
   rand(2..10).times do
     SpaceAmenity.find_or_create_by({
@@ -92,3 +92,14 @@ end
     user_id: User.all.sample.id
     })
 end
+
+Address.create!({space_id: 1, street: '725 US-290', city: 'Austin', state: 'TX', zip: '78735', country: 'USA'})
+Address.create!({space_id: 2, street: '7601 Rialto Blvd', city: 'Austin', state: 'TX', zip: '78735', country: 'USA'})
+Address.create!({space_id: 3, street: '2700 Barton Creek Blvd', unit: '#200', city: 'Austin', state: 'TX', zip: '78735', country: 'USA'})
+Address.create!({space_id: 4, street: '923 Westbank Dr', unit: '#100', city: 'West Lake Hills', state: 'TX', zip: '78746', country: 'USA'})
+Address.create!({space_id: 5, street: '810 Guadalupe St', city: 'Austin', state: 'TX', zip: '78701', country: 'USA'})
+Address.create!({space_id: 6, street: '2313 Red River St', city: 'Austin', state: 'TX', zip: '78705', country: 'USA'})
+Address.create!({space_id: 7, street: '1501 Enfield Rd', city: 'Austin', state: 'TX', zip: '78703', country: 'USA'})
+Address.create!({space_id: 8, street: '205 West 14th Street', city: 'Austin', state: 'TX', zip: '78701', country: 'USA'})
+Address.create!({space_id: 9, street: '101 E 21st St', city: 'Austin', state: 'TX', zip: '78712', country: 'USA'})
+Address.create!({space_id: 10, street: '1021 E 7th St', unit: 'Ste #100', city: 'Austin', state: 'TX', zip: '78702', country: 'USA'})

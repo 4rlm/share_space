@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+<<<<<<< HEAD
 #main-wrapper {
     margin-top: 50px !important;
 }
@@ -15,3 +16,6 @@
     padding-top: 50px;
     padding-bottom: 0px;
 }
+=======
+@import "theme/agency.scss"; // adam replaced agency.min with this, so each theme scss file can be compiled properly.
+>>>>>>> master

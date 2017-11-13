@@ -1,1 +1,24 @@
+
+<div class="row">
+
+  <%= search_form_for @q, class: "form-inline" do |f| %>
+
+  <div class="field form-group field">
+    <%= f.label :name_cont %>
+    <%= f.search_field :name_cont, id: :space_name, class: 'form-control' %>
+  </div>
+
+  <div class="field form-group field">
+    <%= f.label :address_state_cont %>
+    <%= f.search_field :address_state_cont, id: :address_state, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: 'btn btn-success pull-right' %>
+  </div>
+
+  <% end %>
+
+</div>
+
 <%= render 'spaces_partial', spaces: @spaces %>
