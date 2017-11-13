@@ -1,74 +1,68 @@
 
-<h1>My Google Map</h1>
+
+<% latitude = @addresses.first.latitude %>
+<% longitude = @addresses.first.longitude %>
+<% @address = @addresses.first %>
+<!-- <%#= binding.pry %> -->
+
+
 <div id="map"></div>
 
 <script>
-function initMap(){
-  // Map options
-  var options = {
-    zoom:8,
-    center:{lat:30.2672,lng:-97.7431}
-  }
+  function initMap() {
+    var center = { lat: <%= @address.latitude %>, lng: <%= @address.longitude %> };
 
-  // New map
-  var map = new google.maps.Map(document.getElementById('map'), options);
-
-  // Listen for click on map
-  google.maps.event.addListener(map, 'click', function(event){
-    // Add marker
-    addMarker({coords:event.latLng});
-  });
-
-
-  // Array of markers
-  var markers = [
-    {
-      coords:{lat:30.2672,lng:-97.7431},
-      iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-      content:'<h1>Austin TX</h1>'
-    },
-    {
-      coords:{lat:32.897480,lng:-97.040443},
-      content:'<h1>Dallas TX</h1>'
-    },
-    {
-      coords:{lat:30.3061,lng:-97.9524},
-      content:'<h1>Bee Cave TX</h1>'
-    }
-  ];
-
-  // Loop through markers
-  for(var i = 0;i < markers.length;i++){
-    // Add marker
-    addMarker(markers[i]);
-  }
-
-  // Add Marker Function
-  function addMarker(props){
-    var marker = new google.maps.Marker({
-      position:props.coords,
-      map:map,
-      //icon:props.iconImage
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: center
     });
 
-    // Check for customicon
-    if(props.iconImage){
-      // Set icon image
-      marker.setIcon(props.iconImage);
+    addCenterMarker({
+      coords: {lat: <%= @address.latitude%>, lng: <%= @address.longitude%>},
+      iconImage: "<%= asset_path('beachflag.png') %>",
+      content: "<h5><%= @address.space.name%></h5><br><p><%= @address.space.description%></p>"
+    });
+
+    function addCenterMarker(props){
+      var marker = new google.maps.Marker({
+      position: props.coords,
+      map: map,
+      // content: props.content
+      });
+      var infoWindow = new google.maps.InfoWindow({
+      content: props.content
+      });
+      marker.addListener('click', function() {
+      infoWindow.open(map, marker);
+      });
     }
 
-    // Check content
-    if(props.content){
-      var infoWindow = new google.maps.InfoWindow({
-        content:props.content
-      });
 
-      marker.addListener('click', function(){
-        infoWindow.open(map, marker);
+
+    <%@addresses.each do |marker|%>
+      addMarker({
+        coords: {lat: <%= marker.latitude%>, lng: <%= marker.longitude%>},
+        iconImage: "<%= asset_path('beachflag.png') %>",
+        content: "<h5><%= marker.space.name %></h5><br><p><%= marker.full_address %><br><p><%= marker.space.description %></p>"
+      });
+    <%end%>
+
+    function addMarker(props){
+      var marker = new google.maps.Marker({
+      position: props.coords,
+      map: map,
+      // content: props.content
+      });
+      var infoWindow = new google.maps.InfoWindow({
+      content: props.content
+      });
+      marker.addListener('click', function() {
+      infoWindow.open(map, marker);
       });
     }
   }
-}
 </script>
 
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQrnmrYmvLh0Zz5ZfJUePTOpv-2JNDgsY&callback=initMap"></script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQrnmrYmvLh0Zz5ZfJUePTOpv-2JNDgsY&callback=initMap">
+</script>
