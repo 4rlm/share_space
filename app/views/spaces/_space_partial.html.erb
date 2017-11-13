@@ -1,57 +1,64 @@
-<h3>Space Details</h3>
-<p>
-  <strong>Name:</strong>
-  <%= @space.name %>
-</p>
+<div class="space_details">
+  <h3>Space Details</h3>
+  <p>
+    <strong>Name:</strong>
+    <%= @space.name %>
+  </p>
 
-<p>
-  <strong>Website:</strong>
-  <%= @space.website %>
-</p>
+  <p>
+    <strong>Website:</strong>
+    <%= @space.website %>
+  </p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @space.phone %>
-</p>
+  <p>
+    <strong>Phone:</strong>
+    <%= @space.phone %>
+  </p>
 
-<p>
-  <strong>Manager:</strong>
-  <% host = User.find(@space.user_id) %>
-  <%= link_to host.profile.fullname, user_path(host) %>
-</p>
+  <p>
+    <strong>Manager:</strong>
+    <% host = User.find(@space.user_id) %>
+    <%= link_to host.profile.fullname, user_path(host) %>
+  </p>
 
-
-<%= link_to 'Edit', edit_space_path(@space) %><br><br>
-<%if !@space %>
- | <%= link_to 'Back', spaces_path %>
- <%end%>
+  <%= link_to 'Edit', edit_space_path(@space) %><br><br>
+  <%if !@space %>
+   | <%= link_to 'Back', spaces_path %>
+   <%end%>
+ </div>
 
 <!-- address details and map -->
-<% if @space.address %>
-<h4>Address:</h4>
-  <%= render partial: 'addresses/address_partial'%>
-<%end%>
-
-<% if @desks.count > 0 %>
-  <h2>Desks <%= icon('cubes') %></h2>
-  <% @desks.each do |desk|%>
-    <% @desk = desk %>
-    <%= render partial: 'desks/desk_partial', desk: @desk %><br>
+<div class="address_details">
+  <% if @space.address %>
+  <h4>Address:</h4>
+    <%= render partial: 'addresses/address_partial'%>
   <%end%>
+</div>
+ <!-- desks and desk details -->
+<div class="desk_details">
+  <% if @desks.count > 0 %>
+    <h2>Desks <%= icon('cubes') %></h2>
+    <% @desks.each do |desk|%>
+      <% @desk = desk %>
+      <%= render partial: 'desks/desk_partial', desk: @desk %><br>
+    <%end%>
+  <%end%>
+</div>
 
-<%end%>
+<!-- add amenities and modal for editing them -->
 
 <!-- Add desk modal -->
 <div id="add-desks">
     <% if @current_user && (@current_user == @space.user || @current_user.role == "admin") %>
         <%= render partial: 'desks/add_desk_modal' %>
     <%end%>
+<!-- list bookings here -->
 </div>
 
 <!-- Add Address modal -->
 <div id="add-address">
     <% if @current_user && (@current_user == @space.user || @current_user.role == "admin") %>
-        <%= render partial: 'addresses/add_address_modal' %>
+        <%= render partial: 'addresses/add_address_modal' %><br>
     <%end%>
 </div>
 
