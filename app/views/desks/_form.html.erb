@@ -1,4 +1,5 @@
 <%= form_with(model: desk, remote: true) do |form| %>
+<% if desk %>
   <% if desk.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(desk.errors.count, "error") %> prohibited this desk from being saved:</h2>
@@ -10,10 +11,20 @@
       </ul>
     </div>
   <% end %>
+<%end%>
 
+<% if @space %>
+  <%= form.hidden_field :space_id, value: @space.id %>
+<%else%>
   <div class="field form-group field">
     <%= form.label :space_id %>
     <%= form.number_field :space_id, id: :desk_space_id, class: 'form-control' %>
+  </div>
+<%end%>
+
+  <div class="field form-group field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :desk_description, class: 'form-control' %>
   </div>
 
   <div class="actions">

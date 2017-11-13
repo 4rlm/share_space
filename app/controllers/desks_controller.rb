@@ -30,7 +30,7 @@ class DesksController < ApplicationController
 
     respond_to do |format|
       if @desk.save
-        format.html { redirect_to @desk, notice: 'Desk was successfully created.' }
+        format.html { redirect_to Space.find(@desk.space_id), notice: 'Desk was successfully created.' }
         format.json { render :show, status: :created, location: @desk }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class DesksController < ApplicationController
   def update
     respond_to do |format|
       if @desk.update(desk_params)
-        format.html { redirect_to @desk, notice: 'Desk was successfully updated.' }
+        format.html { redirect_to Space.find(@desk.space_id), notice: 'Desk was successfully updated.' }
         format.json { render :show, status: :ok, location: @desk }
       else
         format.html { render :edit }
@@ -71,6 +71,6 @@ class DesksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def desk_params
-      params.require(:desk).permit(:space_id)
+      params.require(:desk).permit(:space_id, :description)
     end
 end

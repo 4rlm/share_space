@@ -1,3 +1,4 @@
+<h3>Space Details</h3>
 <p>
   <strong>Name:</strong>
   <%= @space.name %>
@@ -18,14 +19,33 @@
   <%= @space.user_id %>
 </p>
 
+
+<%= link_to 'Edit', edit_space_path(@space) %>
+<%if !@space %>
+ | <%= link_to 'Back', spaces_path %>
+ <%end%>
+
 <!-- address details and map -->
 <% if @space.address %>
+<h4>Address:</h4>
   <%= render partial: 'addresses/address_partial'%>
 <%end%>
 
+<% if @desks.count > 0 %>
+  <h2>Desks <%= icon('cubes') %></h2>
+  <% @desks.each do |desk|%>
+    <% @desk = desk %>
+    <%= render partial: 'desks/desk_partial', desk: @desk %><br>
+  <%end%>
 
-<%= link_to 'Edit', edit_space_path(@space) %> |
-<%= link_to 'Back', spaces_path %>
+<%end%>
+
+<!-- Add desk modal -->
+<div id="add-desks">
+    <% if @current_user && (@current_user == @space.user || @current_user.role == "admin") %>
+        <%= render partial: 'desks/add_desk_modal' %>
+    <%end%>
+</div>
 
 <!-- Add Address modal -->
 <div id="add-address">
@@ -34,13 +54,7 @@
     <%end%>
 </div>
 
-<% if @desks.count > 0 %>
-  <h2>Desks</h2>
-  <% @desks.each do |desk|%>
-    <% @desk = desk %>
-    <%= render partial: 'desks/desk_partial', desk: @desk %>
-  <%end%>
-<%end%>
+
 
 <!-- IMAGE GALLERY FOR SPACE SHOW/DETAIL PAGE -->
 <div id="space-image-gallery">
