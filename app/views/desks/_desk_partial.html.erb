@@ -10,8 +10,7 @@
   <span>
     <%= @desk.id %>  |
     <%= render partial: "desks/edit_desk_modal"%>
-    <% if @space %> |
-      <%= link_to desk_path(@desk), remote: true, id: @desk.id, method: :delete, data: { confirm: 'Are you sure you want to delete this desk? All current bookings associated with this desk will be deleted.' } do %>
+    <% if @space %> | <%= link_to desk_path(@desk), remote: true, id: @desk.id, method: :delete, data: { confirm: 'Are you sure you want to delete this desk? All current bookings associated with this desk will be deleted.' } do %>
       <%= icon('trash') %>
       <% end %>
     <%end%>
@@ -27,3 +26,4 @@
 <% if !@space%>
   | <%= link_to 'Back', desks_path %>
 <%end%>
+

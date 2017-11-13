@@ -1,3 +1,25 @@
+<div id="carouselExampleControls" class="carousel slide " data-ride="carousel">
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+      <%= image_tag "office1.jpg" %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag "office4.jpg" %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag "office3.jpg" %>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
 <div class="space_details">
   <h3>Space Details</h3>
   <p>
@@ -42,11 +64,13 @@
       <% @desk = desk %>
       <%= render partial: 'desks/desk_partial', desk: @desk %><br>
       <% if desk.bookings.count > 0 %>
-        <strong><p id="desk_bookings">Current Bookings</p></strong>
-        <% @desk.bookings.each do |booking|%>
-          <% @booking = booking %>
-          <%= render partial: 'bookings/booking_partial', booking: @booking %><br>
-        <%end%>
+        <button type="button" class="btn-sm btn-primary display_bookings">View Bookings</button>
+        <div id="desk_bookings">
+          <% @desk.bookings.each do |booking|%>
+            <% @booking = booking %>
+            <%= render partial: 'bookings/booking_partial', booking: @booking %><br>
+          <%end%>
+        </div>
       <%end%>
     <%end%>
   <%end%>
