@@ -37,13 +37,22 @@
  <!-- desks and desk details -->
 <div class="desk_details">
   <% if @desks.count > 0 %>
-    <h2>Desks <%= icon('cubes') %></h2>
+    <h2 id="desk_icon">Desks <%= icon('cubes') %></h2>
     <% @desks.each do |desk|%>
       <% @desk = desk %>
       <%= render partial: 'desks/desk_partial', desk: @desk %><br>
+      <% if desk.bookings.count > 0 %>
+        <strong><p id="desk_bookings">Current Bookings</p></strong>
+        <% @desk.bookings.each do |booking|%>
+          <% @booking = booking %>
+          <%= render partial: 'bookings/booking_partial', booking: @booking %><br>
+        <%end%>
+      <%end%>
     <%end%>
   <%end%>
 </div>
+
+
 
 <!-- add amenities and modal for editing them -->
 
