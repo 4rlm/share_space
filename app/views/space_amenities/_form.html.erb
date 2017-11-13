@@ -1,0 +1,27 @@
+<%= form_with(model: space_amenity, local: true) do |form| %>
+  <% if space_amenity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(space_amenity.errors.count, "error") %> prohibited this space_amenity from being saved:</h2>
+
+      <ul>
+      <% space_amenity.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :amenity_id %>
+    <%= form.number_field :amenity_id, id: :space_amenity_amenity_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :space_id %>
+    <%= form.number_field :space_id, id: :space_amenity_space_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

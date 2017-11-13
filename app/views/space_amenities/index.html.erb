@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Space Amenities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Amenity</th>
+      <th>Space</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @space_amenities.each do |space_amenity| %>
+      <tr>
+        <td><%= space_amenity.amenity_id %></td>
+        <td><%= space_amenity.space_id %></td>
+        <td><%= link_to 'Show', space_amenity %></td>
+        <td><%= link_to 'Edit', edit_space_amenity_path(space_amenity) %></td>
+        <td><%= link_to 'Destroy', space_amenity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Space Amenity', new_space_amenity_path %>
