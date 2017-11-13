@@ -7,6 +7,18 @@ class AddressesController < ApplicationController
   # GET /addresses.json
   def index
     @addresses = Address.all
+
+    # if params[:search].present?
+    #   @addresses = Address.near(params[:search], 50, :order => :distance)
+    # else
+    #   @addresses = Address.all
+    # end
+
+    # @hash = Gmaps4rails.build_markers(@addresses) do |address, marker|
+      # marker.lat address.latitude
+      # marker.lng address.longitude
+    end
+
   end
 
   # GET /addresses/1

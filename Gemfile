@@ -73,3 +73,7 @@ gem 'font-awesome-sass', '~> 4.7.0'
 # gem 'pg_search'
 # gem 'stripe'
 gem 'ransack', github: 'activerecord-hackery/ransack'
+
+gem 'underscore-rails'
+gem 'gmaps4rails'
+gem 'geocoder'
