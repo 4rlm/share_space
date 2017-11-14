@@ -12,6 +12,12 @@ class AmenitiesController < ApplicationController
   # GET /amenities/1
   # GET /amenities/1.json
   def show
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.js # show.js.erb
+    end
+    
   end
 
   # GET /amenities/new

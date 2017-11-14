@@ -2,6 +2,7 @@
 <div class="row">
 
   <div class="col-md-6">
+    <%#= binding.pry %>
 
     <p>
       <strong>Space:</strong>
@@ -42,12 +43,8 @@
 
   <div class="col-md-6">
     <div class="row">
-      <iframe width="700" height="400" frameborder="1" style="border:1"
-       src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCMINjz6qATKxuxTc6tWNzyVehLybEYouY&zoom=17&q=<%= AddressesHelper.format_address(@address) %>"
-       allowfullscreen>
-      </iframe>
+      <%= render 'addresses/embeded_map_partial', address: @address %>
     </div>
-
   </div>
 
 </div>

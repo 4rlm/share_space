@@ -7,56 +7,33 @@
             <div id="error_explanation">
               <h2><%= pluralize(space.errors.count, "error") %> prohibited this space from being saved:</h2>
 
-              <ul>
-              <% space.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-              </ul>
-            </div>
-          <% end %>
-          <div class="row">
-          <div class="col-md-6">
-            <div class="form-group field">
-              <%= form.label :name %>
-              <%= form.text_field :name, id: :space_name, class: 'form-control' %>
-            </div>
-            <div class="field form-group field">
-              <%= form.label :website %>
-              <%= form.text_field :website, id: :space_website, class: 'form-control' %>
-            </div>
+      <ul>
+      <% space.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-            <div class="field form-group field">
-              <%= form.label :phone %>
-              <%= form.text_field :phone, id: :space_phone, class: 'form-control' %>
-            </div>
-          </div>
-          
-          <div class="col-md-6">
-            <div class="field form-group field">
-              <%= form.label :description %>
-              <%= form.text_area :description, id: :space_description, class: 'form-control' %>
-            </div>
-            <div class="actions">
-              <%= form.submit class: 'btn btn-success' %>
-            </div>
-          </div>
+  <div class="field form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :space_name, class: 'form-control' %>
+  </div>
 
-        </div>
-          <!-- <input id="space_amenities" name="accessibility" type="checkbox" value="accessibility"/> Accessibility
-          <input id="space_amenities" name="bike_rack" type="checkbox" value="bike_rack"/> Bike Rack
-          <input id="space_amenities" name="coffee" type="checkbox" value="coffee"/> Coffee
-          <input id="space_amenities" name="computer" type="checkbox" value="computer"/> Computer
-          <input id="space_amenities" name="kitchen" type="checkbox" value="kitchen"/> Kitchen
-          <input id="space_amenities" name="locked_door" type="checkbox" value="locked_door"/> Locked Door
-          <input id="space_amenities" name="monitor" type="checkbox" value="monitor"/> Monitor
-          <input id="space_amenities" name="parking" type="checkbox" value="parking"/> Parking
-          <input id="space_amenities" name="pet_friendly" type="checkbox" value="pet_friendly"/> Pet Friendly
-          <input id="space_amenities" name="phone" type="checkbox" value="phone"/> Phone
-          <input id="space_amenities" name="printer" type="checkbox" value="printer"/> Printer
-          <input id="space_amenities" name="shower" type="checkbox" value="shower"/> Shower
-          <input id="space_amenities" name="tv" type="checkbox" value="tv"/> TV
-          <input id="space_amenities" name="wifi" type="checkbox" value="wifi"/> WiFi -->
-          <!-- <label for="space_amenities">Coffee</label> -->
+  <div class="field form-group">
+    <%= form.label :website %>
+    <%= form.text_field :website, id: :space_website, class: 'form-control' %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :phone %>
+    <%= form.text_field :phone, id: :space_phone, class: 'form-control' %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :space_description, class: 'form-control' %>
+  </div>
 
 
           <!-- amenities -->
@@ -84,4 +61,4 @@
       </div>
     </div>
   </div>
-</section>
+<% end %>

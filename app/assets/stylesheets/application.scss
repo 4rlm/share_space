@@ -21,7 +21,13 @@
 @import "font-awesome";
 
 // @import "theme/agency.scss"; // adam replaced agency.min with this, so each theme scss file can be compiled properly.
-// ADAM MOVED LINK ABOVE TO stylesheets/home.scss to isolate the effects of the styles on other non-related areas of site, like user profile, etc.  The was originally being 'required' above via agency.min, which would exclude additional changes to css. 
+// ADAM MOVED LINK ABOVE TO stylesheets/home.scss to isolate the effects of the styles on other non-related areas of site, like user profile, etc.  The was originally being 'required' above via agency.min, which would exclude additional changes to css.
+
+
+#map{
+  height:400px;
+  width:100%;
+}
 
 
 

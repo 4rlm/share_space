@@ -1,28 +1,74 @@
-<section class="bg-light" id="portfolio">
-  <div class="container">
-    <h2 class="section-heading text-muted"> #searchcount sharespace offices in #citysearched</h2>
-    <div class="row">
-      <div class="col-md-12 text-center">
-      </div>
-    </div>
-    <div class="row">
-  <% @addresses.each do |address| %>
-      <div class="col-md-4 col-sm-6 portfolio-item">
-        <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
-          <div class="portfolio-hover">
-            <div class="portfolio-hover-content">
-              <i class="fa fa-plus fa-3x"></i>
-            </div>
-          </div>
-          <img class="img-fluid" src="https://picture.liquidspace.com/Index/60649c70-c0ce-445f-aee3-43fdce3988fd?emptyImageUrl=https:%2f%2fcontent.liquidspace.com%2fImages%2fliquid-holder.jpg%3fv%3d-73115844&etag=piQl/jN4q2OvYPjWs+SPTg==s" alt="">
-        </a>
-        <div class="portfolio-caption">
-          <h4><%= link_to address.space.name, address %></h4>
-          <p class="text-muted"><%= address.street %></p>
-        </div>
-      </div>
+<h3>Addresses</h3>
+
+<div class="row">
+
+  <!-- GEOCODING MAP QUERY - TESTING - ADAM -->
+  <%= form_tag addresses_path, :method => :get do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search Near", :name => nil %>
+    </p>
   <% end %>
-    </div>
-      
+
 </div>
-</section>
+
+<div class="row">
+  <table class="table table-bordered table-hover table-striped text-nowrap">
+  <thead>
+    <tr>
+      <th>Space Name</th>
+      <th>Street</th>
+      <th>Unit</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Country</th>
+      <th colspan="2">Manage <%= icon('sliders') %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @addresses.each do |address| %>
+      <tr>
+        <td><%= link_to address.space.name, address %></td>
+        <td><%= address.street %></td>
+        <td><%= address.unit %></td>
+        <td><%= address.city %></td>
+        <td><%= address.state %></td>
+        <td><%= address.zip %></td>
+        <td><%= address.country %></td>
+
+        <td><%= link_to edit_address_path(address) do %>
+          <%= icon('pencil-square-o') %>
+          <% end %>
+        </td>
+
+        <td><%= link_to address, remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <%= icon('trash') %>
+          <% end %>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>
+
+<%= link_to 'New Address', new_address_path, class: "btn btn-success" %>
+
+<div class="container">
+  <h4>Dynamic Map section</h4>
+  <p>Pins of all Addresses returned in search.</p>
+
+    <div class="col-md-6">
+      <div class="row">
+        <%= render 'addresses/dynamic_map_partial', addresses: @addresses %>
+      </div>
+    </div>
+
+</div>
+
+<br><br>
+<hr>
+<br>

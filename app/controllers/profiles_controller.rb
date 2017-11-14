@@ -12,6 +12,12 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+    
+    respond_to do |format|
+      format.html # show.html.erb
+      format.js # show.js.erb
+    end
+
   end
 
   # GET /profiles/new
