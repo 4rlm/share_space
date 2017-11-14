@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.carousel-inner > .carousel-item > img {
+  max-height: 400px;
+}
+
 
 // Styling for the newSpace section
 section#newSpace {
@@ -9,7 +13,7 @@ section#newSpace {
     // background-image: url('../img/map-image.png');
     background-repeat: no-repeat;
     background-position: center;
-  
+
     .form-group {
       margin-bottom: 25px;
       input,
@@ -24,3 +28,4 @@ section#newSpace {
       }
     }
   }
+
