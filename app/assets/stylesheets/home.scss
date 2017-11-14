@@ -1,6 +1,6 @@
 #main-wrapper {
     margin-top: 100px !important;
-    background-color: #98ced7 !important;
+    background-color: #FCF9F9 !important;
 }
 
 .intro-text {
@@ -22,14 +22,14 @@ h3.section-subheading {
 
 
 #mainNav {
-  background-color: #fff !important;
+  background-color: white !important;
 }
 
-.navbar-toggler {
-  color: #000 !important;
-}
+// .navbar-toggler {
+//   color: rgba(245, 245, 245, 0.03) !important;
+// }
 .nav-link:hover {
-  color: #98ced7 !important;
+  color: #F5F5F5 !important;
 }
 
 #about {
@@ -45,4 +45,16 @@ h3.section-subheading {
     background: #98ced7c4 !important;
 }
 
+#mainNav .navbar-nav .nav-item .nav-link{
+  color: #98ced7c4 !important;
+}
+
+.timeline:before{
+  background-color: #F7A278 !important;
+}
+
+.timeline > li .timeline-image {
+  background-color: #2AB7CA !important;
+  
+}
 @import "theme/agency.scss"; // adam replaced agency.min with this, so each theme scss file can be compiled properly.

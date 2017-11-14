@@ -1,12 +1,14 @@
-<div class="">
-  <%= form_with(model: user, remote: true) do |f| %>
-    <% if user.errors.any? %>
-
-  <div id="error_explanation">
-    <h5><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h5>
-    <ul>
-      <% user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+<section id="newSpace">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <%= form_with(model: user, remote: true) do |f| %>
+          <% if user.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+     <ul>
+      <% space.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
       <% end %>
     </ul>
   </div>
@@ -38,3 +40,4 @@
 
   <% end %>
 </div>
+
