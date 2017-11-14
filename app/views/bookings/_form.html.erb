@@ -14,10 +14,17 @@
   <%end%>
 
 
-  <div class="field form-group field">
-    <%= form.label :booking_date %>
-    <%= form.datetime_select :booking_date, id: :booking_booking_date, class: 'form-control' %>
-  </div>
+<div class="field form-group field">
+<%= form.label :Start_Date %>
+<input type='date' name="booking_date[start]"/>
+</div>
+
+<div class="field form-group field">
+  <%= form.label :End_Date %>
+  <input type='date' name="booking_date[end]"/>
+</div>
+
+
 <% if @desk %>
   <%= form.hidden_field :desk_id, value: @desk.id %>
 <%else%>

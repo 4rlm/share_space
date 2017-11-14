@@ -1,0 +1,23 @@
+<!-- MODAL BUTTONS -->
+<button type="button" class="btn btn-sm" style="color: blue; background: white;" data-toggle="modal" data-target="#addBookingModal"><%= icon('book') %></button>
+
+<!-- Modal -->
+  <div class="modal fade" id="addBookingModal" role="dialog">
+    <div class="row modal-dialog">
+
+      <!-- Modal content-->
+      <div class="col-md-9 modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" >&times;</button>
+          <h4 class="modal-title" style="color: black;"> Create New Booking <%= icon('book') %></h4>
+        </div>
+
+        <!-- Modal body-->
+          <div class="modal-body">
+            <%= render 'bookings/form', booking: Booking.new %>
+        </div>
+
+      </div>
+
+    </div>
+  </div>

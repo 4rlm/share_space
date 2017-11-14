@@ -11,5 +11,4 @@ class Space < ApplicationRecord
   has_many :bookings, through: :desks, dependent: :destroy
 
 
-
 end

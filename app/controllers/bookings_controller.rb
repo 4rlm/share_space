@@ -26,6 +26,7 @@ class BookingsController < ApplicationController
   # POST /bookings
   # POST /bookings.json
   def create
+    binding.pry
     @booking = Booking.new(booking_params)
 
     respond_to do |format|
@@ -71,6 +72,6 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:booking_date, :desk_id, :user_id)
+      params.require(:booking).permit(:booking_date, :start_date, :end_date, :desk_id, :user_id)
     end
 end
