@@ -15,6 +15,7 @@ class Booking < ApplicationRecord
         end
       end
     end
+
     if conflicts > 0
         return true
       else
@@ -24,30 +25,10 @@ class Booking < ApplicationRecord
 
   def find_conflicts
     if conflicts?
-      errors[:base] << "This booking conflicts with a current booking."
+      errors[:status] << "This booking conflicts with a current booking."
     end
   end
 
 
-# Booking 1                        self
-# id:1
-# start_date: 11-18-2017
-# end_date: 01-04-2018
-# desk_id:13
-# user_id:12
-
-# Booking 2                     booking
-# id:4
-# start_date: 11-28-2017
-# end_date: 12-30-2017
-# desk_id: 13
-# user_id: 8
-
-# Booking 3                         test
-# id:
-# start_date: 2018-3-14
-# end_date:   2018-3-19
-# desk_id: 13
-# user_id: 9
 
 end

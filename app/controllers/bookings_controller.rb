@@ -26,15 +26,13 @@ class BookingsController < ApplicationController
   # POST /bookings
   # POST /bookings.json
   def create
-    binding.pry
     @booking = Booking.new(booking_params)
-
     respond_to do |format|
       if @booking.save
-        format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
+        format.html { redirect_to Space.find(Desk.find(@booking.desk_id).space_id), notice: 'Booking was successfully created.' }
         format.json { render :show, status: :created, location: @booking }
       else
-        format.html { render :new }
+        format.html { redirect_to Space.find(Desk.find(@booking.desk_id).space_id), notice: 'ERROR. Dates unavailable. Please try again.'}
         format.json { render json: @booking.errors, status: :unprocessable_entity }
       end
     end

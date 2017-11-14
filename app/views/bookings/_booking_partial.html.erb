@@ -19,10 +19,19 @@
 
 </p>
 
-<p>
-  <strong>Booking date:</strong>
-  <%= @booking.booking_date.strftime("%b %d, %Y") %>
-</p>
+<%if @booking.start_date%>
+  <p>
+    <strong>Booking Start Date:</strong>
+    <%= @booking.start_date.strftime("%b %d, %Y") %>
+  </p>
+<%end%>
+
+<%if @booking.end_date%>
+  <p>
+    <strong>Booking End Date:</strong>
+    <%= @booking.end_date.strftime("%b %d, %Y") %>
+  </p>
+ <%end%>
 
 <p>
   <strong>User:</strong>

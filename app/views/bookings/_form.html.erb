@@ -15,13 +15,12 @@
 
 
 <div class="field form-group field">
-  <%= form.label :start_date %>
-  <input type='date' name="booking[:start_date]"/>
+    <%= form.label :start_date%>
+    <%= form.date_field :start_date, as: :date, id: :booking_start_date, class: 'form-control' %>
 </div>
-
 <div class="field form-group field">
-  <%= form.label :end_date %>
-  <input type='date' name="booking[:end_date]"/>
+    <%= form.label :end_date%>
+    <%= form.date_field :end_date, as: :date, id: :booking_end_date, class: 'form-control' %>
 </div>
 
 
