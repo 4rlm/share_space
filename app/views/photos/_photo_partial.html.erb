@@ -1,22 +1,17 @@
+
 <div class="row">
-  <div class="row">
-    <%= link_to image_tag(photo.image.url(:thumb), class: 'media-object'), photo.image.url, target: '_blank' %>
-  </div>
+  <%= link_to image_tag(photo.image.url(:thumb), class: 'media-object'), photo.image.url, target: '_blank' %>
+</div>
 
-  <div class="row">
-    <h4 class="media-heading"><%= photo.title %></h4>
-  </div>
+<div class="row">
+  <h4 class="media-heading"><%= photo.title %></h4>
+</div>
 
-  <div class="row">
-    <!-- ONLY ADMIN AND Proper user CAN REMOVE IMAGES -->
-
-    <% if @current_user && (@current_user == @user || @current_user.role == 'admin') %>
-      <%= link_to photo, remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
-        <%= icon('trash') %>
-      <% end %>
+<div class="row">
+  <!-- ONLY ADMIN AND Proper user CAN REMOVE IMAGES -->
+  <% if @current_user && (@current_user == @user || @current_user.role == 'admin') %>
+    <%= link_to photo, remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
+      <%= icon('trash') %>
     <% end %>
-
-
-  </div>
-
+  <% end %>
 </div>

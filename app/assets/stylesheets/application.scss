@@ -24,6 +24,12 @@
 // ADAM MOVED LINK ABOVE TO stylesheets/home.scss to isolate the effects of the styles on other non-related areas of site, like user profile, etc.  The was originally being 'required' above via agency.min, which would exclude additional changes to css.
 
 
+#map{
+  height:400px;
+  width:100%;
+}
+
+
 
 
 // #uploadImageModal {

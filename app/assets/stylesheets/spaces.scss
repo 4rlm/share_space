@@ -5,3 +5,27 @@
 .carousel-inner > .carousel-item > img {
   max-height: 400px;
 }
+
+
+// Styling for the newSpace section
+section#newSpace {
+    background-color: #98ced7;
+    // background-image: url('../img/map-image.png');
+    background-repeat: no-repeat;
+    background-position: center;
+
+    .form-group {
+      margin-bottom: 25px;
+      input,
+      textarea {
+        padding: 20px;
+      }
+      input.form-control {
+        height: auto;
+      }
+      textarea.form-control {
+        height: 248px;
+      }
+    }
+  }
+

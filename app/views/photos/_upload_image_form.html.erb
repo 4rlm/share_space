@@ -16,10 +16,10 @@
     <%= f.hidden_field :space_id, :value => @space.id %>
     <%= f.hidden_field :user_id, :value => @space.user_id %>
   <% elsif @user %>
-    <%= f.hidden_field :space_id, :value => 1 %> <!-- FOR TESTING ONLY -->
+    <%#= f.hidden_field :space_id, :value => 1 %> <!-- FOR TESTING ONLY -->
     <%= f.hidden_field :user_id, :value => @user.id %>
   <% elsif @current_user %>
-    <%= f.hidden_field :space_id, :value => 1 %> <!-- FOR TESTING ONLY -->
+    <%#= f.hidden_field :space_id, :value => 1 %> <!-- FOR TESTING ONLY -->
     <%= f.hidden_field :user_id, :value => @current_user.id %>
   <% end %>
 

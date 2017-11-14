@@ -6,12 +6,10 @@ class SpacesController < ApplicationController
   # GET /spaces
   # GET /spaces.json
   def index
-    # @spaces = Space.all
+    @spaces = Space.all
 
     # @search = Space.search(params[:q])
     # @spaces = @search.result
-
-
 
     @q = Space.ransack(params[:q])
     # @spaces = @q.result.includes(:addresses)
@@ -26,8 +24,14 @@ class SpacesController < ApplicationController
   # GET /spaces/1
   # GET /spaces/1.json
   def show
-    @address = Address.find_by(space_id: @space.id)
-    @desks = Desk.where(space_id: @space.id)
+    # @address = Address.find_by(space_id: @space.id)
+    # @desks = Desk.where(space_id: @space.id)
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.js # show.js.erb
+    end
+
   end
 
   # GET /spaces/new
@@ -88,6 +92,8 @@ class SpacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def space_params
-      params.require(:space).permit(:name, :website, :phone, :user_id, :description)
+      # params.require(:space).permit(:name, :website, :phone, :user_id, :description)
+      params.require(:space).permit(:name, :website, :phone, :user_id, :description, amenity_ids: [])
+
     end
 end

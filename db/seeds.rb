@@ -115,3 +115,16 @@ Address.create!({space_id: 7, street: '1501 Enfield Rd', city: 'Austin', state: 
 Address.create!({space_id: 8, street: '205 West 14th Street', city: 'Austin', state: 'TX', zip: '78701', country: 'USA'})
 Address.create!({space_id: 9, street: '101 E 21st St', city: 'Austin', state: 'TX', zip: '78712', country: 'USA'})
 Address.create!({space_id: 10, street: '1021 E 7th St', unit: 'Ste #100', city: 'Austin', state: 'TX', zip: '78702', country: 'USA'})
+
+
+# find_coordinates(sample)
+#
+# def find_coordinates(object)
+#   coordinates = object.fetch_coordinates
+#   object.longitude = coordinates[0]
+#   object.latitude = coordinates[1]
+#   binding.pry
+#
+# end
+#
+# binding.pry

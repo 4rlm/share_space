@@ -1,0 +1,68 @@
+
+
+<% latitude = @addresses.first.latitude %>
+<% longitude = @addresses.first.longitude %>
+<% @address = @addresses.first %>
+<!-- <%#= binding.pry %> -->
+
+
+<div id="map"></div>
+
+<script>
+  function initMap() {
+    var center = { lat: <%= @address.latitude %>, lng: <%= @address.longitude %> };
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: center
+    });
+
+    addCenterMarker({
+      coords: {lat: <%= @address.latitude%>, lng: <%= @address.longitude%>},
+      iconImage: "<%= asset_path('beachflag.png') %>",
+      content: "<h5><%= @address.space.name%></h5><br><p><%= @address.space.description%></p>"
+    });
+
+    function addCenterMarker(props){
+      var marker = new google.maps.Marker({
+      position: props.coords,
+      map: map,
+      // content: props.content
+      });
+      var infoWindow = new google.maps.InfoWindow({
+      content: props.content
+      });
+      marker.addListener('click', function() {
+      infoWindow.open(map, marker);
+      });
+    }
+
+
+
+    <%@addresses.each do |marker|%>
+      addMarker({
+        coords: {lat: <%= marker.latitude%>, lng: <%= marker.longitude%>},
+        iconImage: "<%= asset_path('beachflag.png') %>",
+        content: "<h5><%= marker.space.name %></h5><br><p><%= marker.full_address %><br><p><%= marker.space.description %></p>"
+      });
+    <%end%>
+
+    function addMarker(props){
+      var marker = new google.maps.Marker({
+      position: props.coords,
+      map: map,
+      // content: props.content
+      });
+      var infoWindow = new google.maps.InfoWindow({
+      content: props.content
+      });
+      marker.addListener('click', function() {
+      infoWindow.open(map, marker);
+      });
+    }
+  }
+</script>
+
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQrnmrYmvLh0Zz5ZfJUePTOpv-2JNDgsY&callback=initMap">
+</script>

@@ -20,110 +20,135 @@
   </a>
 </div>
 
-<div class="space_details">
-  <h3>Space Details</h3>
-  <p>
-    <strong>Name:</strong>
-    <%= @space.name %>
-  </p>
+<div class="row">
 
-  <p>
-    <strong>Website:</strong>
-    <%= @space.website %>
-  </p>
+  <div class="col-md-6"> <!-- START LEFT SIDE COLUMN -->
 
-  <p>
-    <strong>Phone:</strong>
-    <%= @space.phone %>
-  </p>
+    <div class="row">
+      <h5>Space Details</h5>
+    </div>
 
-  <p>
-    <strong>Manager:</strong>
-    <% host = User.find(@space.user_id) %>
-    <%= link_to host.profile.fullname, user_path(host) %>
-  </p>
+    <div class="row"> <!-- SPACE DETAILS -->
+      <div class="row">
+        <p><strong>Name:</strong><%= @space.name %></p>
+        <p><strong>Website:</strong><%= @space.website %></p>
+        <p><strong>Phone:</strong><%= @space.phone %></p>
+        <p><strong>Manager:</strong><% host = @space.user %><%= link_to host.profile.fullname, user_path(host) %></p>
+      </div>
 
-  <%= link_to 'Edit', edit_space_path(@space) %><br><br>
-  <%if !@space %>
-   | <%= link_to 'Back', spaces_path %>
-   <%end%>
- </div>
+      <div class="row">
+        <%= link_to 'Edit', edit_space_path(@space) %><br><br>
+        <%if !@space %>
+        | <%= link_to 'Back', spaces_path %>
+        <%end%>
+      </div>
+    </div>
 
-<!-- address details and map -->
-<div class="address_details">
-  <% if @space.address %>
-  <h4>Address:</h4>
-    <%= render partial: 'addresses/address_partial'%>
-  <%end%>
-</div>
- <!-- desks and desk details -->
-<div class="desk_details">
-  <% if @desks.count > 0 %>
-    <h2 id="desk_icon">Desks <%= icon('cubes') %></h2>
-    <% @desks.each do |desk|%>
-      <% @desk = desk %>
-      <%= render partial: 'desks/desk_partial', desk: @desk %><br>
-      <% if desk.bookings.count > 0 %>
-        <button type="button" class="btn-sm btn-primary display_bookings">View Bookings</button>
-        <div id="desk_bookings">
-          <% @desk.bookings.each do |booking|%>
-            <% @booking = booking %>
-            <%= render partial: 'bookings/booking_partial', booking: @booking %><br>
+    <hr>
+
+    <div class="row"> <!-- AMENITIES -->
+
+      <h3>Amenities</h3>
+      <% if @space.amenities.count > 0 %>
+      <% @space_amenities = @space.amenities %>
+      <%= render 'space_amenities/space_amenities_partial', space_amenities: @space_amenities %>
+      <%= link_to 'Edit Amenities', edit_space_path(@space) %>
+      <% else %>
+      <%= link_to 'Add Amenities', edit_space_path(@space) %>
+      <% end %>
+    </div>
+
+    <hr>
+
+
+    <div class="row"> <!-- DESKS -->
+      <h3>Desks</h3>
+
+      <div class="row desk_details">
+        <% if @desks.count > 0 %>
+        <h2 id="desk_icon">Desks <%= icon('cubes') %></h2>
+        <% @desks.each do |desk|%>
+          <% @desk = desk %>
+          <%= render partial: 'desks/desk_partial', desk: @desk %><br>
+          <% if desk.bookings.count > 0 %>
+            <button type="button" class="btn-sm btn-primary display_bookings">View Bookings</button>
+            <div id="desk_bookings">
+              <% @desk.bookings.each do |booking|%>
+                <% @booking = booking %>
+                <%= render partial: 'bookings/booking_partial', booking: @booking %><br>
+              <%end%>
+            </div>
+          <%end%>
+        <%end%>
+      <%end%>
+      </div>
+
+      <div id="add-desks"> <!-- ADD DESK MODAL -->
+        <% if @current_user && (@current_user == @space.user || @current_user.role == "admin") %>
+        <%= render partial: 'desks/add_desk_modal' %>
+        <%end%>
+
+        <div class="row"> <!-- BOOKINGS -->
+          <h4>Bookings</h4>
+        </div>
+
+      </div>
+    </div>
+
+    <hr>
+
+  </div> <!-- END OF LEFT SIDE COLUMN -->
+
+  <div class="col-md-6"> <!-- START RIGHT SIDE COLUMN -->
+
+    <!-- address details and map -->
+    <div class="row address_details">
+      <h3>Address</h3>
+
+      <% if !@space.address.nil? %>
+        <% @address = @space.address %>
+        <%= render 'addresses/address_partial', address: @address %>
+      <% else %>
+        <div id="add-address">
+          <% if @current_user && (@current_user == @space.user || @current_user.role == "admin") %>
+          <%= render partial: 'addresses/add_address_modal' %><br>
           <%end%>
         </div>
-      <%end%>
-    <%end%>
-  <%end%>
-</div>
+      <% end %>
+    </div>
 
+    <hr>
 
+    <div class="row" id="space-image-gallery"> <!-- IMAGE GALLERY -->
 
-<!-- add amenities and modal for editing them -->
+      <div class="row">
+        <% photos = @space.photos %>
+        <% if photos %>
+        <% photos.each do |photo| %>
+        <div id="space-photo">
+          <%= link_to image_tag(photo.image.url(:thumb)), photo.image.url, target: '_blank', width: 175 %><br>
+          <% if @current_user && (@current_user == photo.user || @current_user.role == "admin") %>
 
-<!-- Add desk modal -->
-<div id="add-desks">
-    <% if @current_user && (@current_user == @space.user || @current_user.role == "admin") %>
-        <%= render partial: 'desks/add_desk_modal' %>
-    <%end%>
-<!-- list bookings here -->
-</div>
-
-
-
-<!-- Add Address modal -->
-<div id="add-address">
-    <% if @current_user && (@current_user == @space.user || @current_user.role == "admin") %>
-        <%= render partial: 'addresses/add_address_modal' %><br>
-    <%end%>
-</div>
-
-
-
-<!-- IMAGE GALLERY FOR SPACE SHOW/DETAIL PAGE -->
-<div id="space-image-gallery">
-
-  <!-- VIEW PHOTOS -->
-	<% photos = @space.photos %>
-	<% if photos %>
-		<% photos.each do |photo| %>
-			<div id="space-photo">
-				<%= link_to image_tag(photo.image.url(:thumb)), photo.image.url, target: '_blank', width: 175 %><br>
-				<% if @current_user && (@current_user == photo.user || @current_user.role == "admin") %>
-
-        <%= link_to photo, remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <%= link_to photo, remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
           <%= icon('trash') %>
+          <% end %>
+
+          <% end %>
+        </div>
         <% end %>
+        <% end %>
+      </div>
 
-				<% end %>
-			</div>
-		<% end %>
-	<% end %>
+      <div class="row" id="space-image-gallery-text">
+        <!-- UPLOAD IMAGES TO SPACE (ONLY ADMIN AND SPACE HOST) -->
+        <% if @current_user && (@current_user == @space.user || @current_user.role == "admin") %>
+        <%= render partial: 'photos/upload_image_modal', space: @space %>
+        <% end %>
+      </div>
 
-  <div id="space-image-gallery-text">
-  	<!-- UPLOAD IMAGES TO SPACE (ONLY ADMIN AND SPACE HOST) -->
-  	<% if @current_user && (@current_user == @space.user || @current_user.role == "admin") %>
-  		<%= render partial: 'photos/upload_image_modal', space: @space %>
-  	<% end %>
-	</div>
+    </div>
+
+  </div> <!-- END OF RIGHT SIDE COLUMN -->
+
 
 </div>
