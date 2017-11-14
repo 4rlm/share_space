@@ -1,6 +1,6 @@
 class Photo < ApplicationRecord
   belongs_to :user
-  belongs_to :space
+  # belongs_to :space
 
   has_attached_file :image,
   styles: { thumb: ["150x150#", :jpg], original: ['500x500>', :jpg] },

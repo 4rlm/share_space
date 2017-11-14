@@ -17,8 +17,7 @@
 
   <p>
     <strong>Manager:</strong>
-    <%= host = @space.user %>
-    <%# host = User.find(@space.user_id) %>
+    <% host = @space.user %>
     <%= link_to host.profile.fullname, user_path(host) %>
   </p>
 
@@ -33,7 +32,6 @@
   <% if @space.address %>
   <% @address = @space.address %>
   <h4>Address:</h4>
-  <%#= binding.pry %>
     <%= render 'addresses/address_partial', address: @address %>
   <%end%>
 </div>
@@ -50,7 +48,7 @@
     <%end%>
   <%end%>
   <%end%>
-  
+
 </div>
 
 <!-- add amenities and modal for editing them -->
@@ -79,6 +77,7 @@
 
   <!-- VIEW PHOTOS -->
 	<% photos = @space.photos %>
+
 	<% if photos %>
 		<% photos.each do |photo| %>
 			<div id="space-photo">

@@ -3,7 +3,9 @@ class Space < ApplicationRecord
   has_one :address, dependent: :destroy
 
   # has_many :photos, dependent: :destroy
-  has_many :photos
+  # has_many :photos
+  has_many :photos, through: :user
+
 
   has_many :desks, dependent: :destroy
   has_many :space_amenities, dependent: :destroy

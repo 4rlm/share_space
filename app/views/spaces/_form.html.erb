@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field form-group field">
+  <div class="field form-group">
     <%= form.label :name %>
     <%= form.text_field :name, id: :space_name, class: 'form-control' %>
   </div>
 
-  <div class="field form-group field">
+  <div class="field form-group">
     <%= form.label :website %>
     <%= form.text_field :website, id: :space_website, class: 'form-control' %>
   </div>
 
-  <div class="field form-group field">
+  <div class="field form-group">
     <%= form.label :phone %>
     <%= form.text_field :phone, id: :space_phone, class: 'form-control' %>
   </div>
 
-  <div class="field form-group field">
+  <div class="field form-group">
     <%= form.label :description %>
     <%= form.text_area :description, id: :space_description, class: 'form-control' %>
   </div>
@@ -74,5 +74,3 @@
     <%= form.submit class: 'btn btn-success pull-right' %>
   </div>
 <% end %>
-
-
