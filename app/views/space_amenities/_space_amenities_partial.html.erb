@@ -1,36 +1,11 @@
-<h3>Space Amenities</h3>
-
-<div class="row">
-  <table class="table table-bordered table-hover table-striped text-nowrap">
-  <thead>
+<table class="table table-bordered table-hover table-striped text-nowrap">
+  <% @space_amenities.each do |space_amenity| %>
     <tr>
-      <th>Amenity</th>
-      <th>Space</th>
-      <th colspan="2">Manage <%= icon('sliders') %></th>
+      <td><%= space_amenity.name %></td>
+      <td><%= link_to space_amenity, remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <%= icon('trash') %>
+        <% end %>
+      </td>
     </tr>
-  </thead>
-
-  <tbody>
-    <% @space_amenities.each do |space_amenity| %>
-      <tr>
-        <td><%= link_to space_amenity.amenity.name, space_amenity %></td>
-        <td><%= space_amenity.space.name %></td>
-
-        <td><%= link_to edit_space_amenity_path(space_amenity) do %>
-          <%= icon('pencil-square-o') %>
-          <% end %>
-        </td>
-
-        <td><%= link_to space_amenity, remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
-          <%= icon('trash') %>
-          <% end %>
-        </td>
-
-      </tr>
-    <% end %>
-  </tbody>
+  <% end %>
 </table>
-
-<%= link_to 'New Space Amenity', new_space_amenity_path %>
-
-</div>

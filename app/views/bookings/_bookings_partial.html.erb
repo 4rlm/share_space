@@ -19,7 +19,7 @@
         <td><%= booking.booking_date.strftime('%x') %></td>
 
         <td><%= link_to booking.desk_id, booking.desk %></td>
-        <td><%= link_to booking.user_id, booking.user %></td>
+        <td><%= link_to booking.user.profile.fullname, booking.user %></td>
 
         <td><%= link_to edit_booking_path(booking) do %>
           <%= icon('pencil-square-o') %>

@@ -28,7 +28,7 @@ class SpacesController < ApplicationController
   def show
     # @address = Address.find_by(space_id: @space.id)
     # @desks = Desk.where(space_id: @space.id)
-    
+
     respond_to do |format|
       format.html # show.html.erb
       format.js # show.js.erb
@@ -94,6 +94,8 @@ class SpacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def space_params
-      params.require(:space).permit(:name, :website, :phone, :user_id, :description)
+      # params.require(:space).permit(:name, :website, :phone, :user_id, :description)
+      params.require(:space).permit(:name, :website, :phone, :user_id, :description, amenity_ids: [])
+
     end
 end
