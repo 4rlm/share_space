@@ -1,15 +1,17 @@
 <div id="carouselExampleControls" class="carousel slide " data-ride="carousel">
   <div class="carousel-inner" role="listbox">
-    <div class="carousel-item active">
-      <%= image_tag "office1.jpg" %>
+
+    <% if @space.photos.present? %>
+    <% @space.photos.each do |photo| %>
+    <%binding.pry%>
+      <div class="carousel-item active">
+      <%= image_tag photo.image_file_name%>
     </div>
-    <div class="carousel-item">
-      <%= image_tag "office4.jpg" %>
-    </div>
-    <div class="carousel-item">
-      <%= image_tag "office3.jpg" %>
-    </div>
+      <%end%>
+    <%end%>
+    <!-- other image -->
   </div>
+
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
@@ -69,19 +71,19 @@
         <% if @desks.count > 0 %>
         <h2 id="desk_icon">Desks <%= icon('cubes') %></h2>
         <% @desks.each do |desk|%>
-          <% @desk = desk %>
-          <%= render partial: 'desks/desk_partial', desk: @desk %><br>
-          <% if desk.bookings.count > 0 %>
-            <button type="button" class="btn-sm btn-primary display_bookings">View Bookings</button>
-            <div id="desk_bookings">
-              <% @desk.bookings.each do |booking|%>
-                <% @booking = booking %>
-                <%= render partial: 'bookings/booking_partial', booking: @booking %><br>
-              <%end%>
-            </div>
+        <% @desk = desk %>
+        <%= render partial: 'desks/desk_partial', desk: @desk %><br>
+        <% if desk.bookings.count > 0 %>
+        <button type="button" class="btn-sm btn-primary display_bookings">View Bookings</button>
+        <div id="desk_bookings">
+          <% @desk.bookings.each do |booking|%>
+          <% @booking = booking %>
+          <%= render partial: 'bookings/booking_partial', booking: @booking %><br>
           <%end%>
+        </div>
         <%end%>
-      <%end%>
+        <%end%>
+        <%end%>
       </div>
 
       <div id="add-desks"> <!-- ADD DESK MODAL -->
@@ -107,14 +109,14 @@
       <h3>Address</h3>
 
       <% if !@space.address.nil? %>
-        <% @address = @space.address %>
-        <%= render 'addresses/address_partial', address: @address %>
+      <% @address = @space.address %>
+      <%= render 'addresses/address_partial', address: @address %>
       <% else %>
-        <div id="add-address">
-          <% if @current_user && (@current_user == @space.user || @current_user.role == "admin") %>
-          <%= render partial: 'addresses/add_address_modal' %><br>
-          <%end%>
-        </div>
+      <div id="add-address">
+        <% if @current_user && (@current_user == @space.user || @current_user.role == "admin") %>
+        <%= render partial: 'addresses/add_address_modal' %><br>
+        <%end%>
+      </div>
       <% end %>
     </div>
 
