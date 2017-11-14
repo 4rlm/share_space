@@ -1,3 +1,26 @@
 // Place all the styles related to the Spaces controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// Styling for the newSpace section
+section#newSpace {
+    background-color: #98ced7;
+    // background-image: url('../img/map-image.png');
+    background-repeat: no-repeat;
+    background-position: center;
+  
+    .form-group {
+      margin-bottom: 25px;
+      input,
+      textarea {
+        padding: 20px;
+      }
+      input.form-control {
+        height: auto;
+      }
+      textarea.form-control {
+        height: 248px;
+      }
+    }
+  }

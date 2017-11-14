@@ -1,39 +1,21 @@
-<h3>Spaces</h3>
-
+<section class="bg-light" id="portfolio">
 <div class="row">
-  <table class="table table-bordered table-hover table-striped text-nowrap">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <%#= sort_link(@q, :name) %>
-      <th>Website</th>
-      <th>Phone</th>
-      <th>User</th>
-      <th colspan="2">Manage <%= icon('sliders') %></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @spaces.each do |space| %>
-      <tr>
-        <td><%= link_to space.name, space %></td>
-        <td><%= space.website %></td>
-        <td><%= space.phone %></td>
-        <td><%= link_to space.user.username, space.user %></td>
-
-        <td><%= link_to edit_space_path(space) do %>
-          <%= icon('pencil-square-o') %>
-          <% end %>
-        </td>
-
-        <td><%= link_to space, remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
-          <%= icon('trash') %>
-          <% end %>
-        </td>
-
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-</div>
+  <% @spaces.each do |space| %>
+      <div class="col-md-4 col-sm-6 portfolio-item">
+        <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+          <div class="portfolio-hover">
+            <div class="portfolio-hover-content">
+              <i class="fa fa-plus fa-3x"></i>
+            </div>
+          </div>
+          <img class="img-fluid" src="https://picture.liquidspace.com/Index/60649c70-c0ce-445f-aee3-43fdce3988fd?emptyImageUrl=https:%2f%2fcontent.liquidspace.com%2fImages%2fliquid-holder.jpg%3fv%3d-73115844&etag=piQl/jN4q2OvYPjWs+SPTg==s" alt="">
+        </a>
+        <div class="portfolio-caption">
+          <h4><%= link_to space.name, space %></h4>
+          <p class="text-muted"><%= space.address.street %></p>
+        </div>
+      </div>
+  <% end %>
+    </div>
+  </div>
+</section>
