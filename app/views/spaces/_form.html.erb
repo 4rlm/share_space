@@ -14,11 +14,12 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field form-group">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :space_name, class: 'form-control' %>
-  </div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="field form-group">
+      <%= form.label :name %>
+      <%= form.text_field :name, id: :space_name, class: 'form-control' %>
+    </div>
 
   <div class="field form-group">
     <%= form.label :website %>
@@ -29,12 +30,17 @@
     <%= form.label :phone %>
     <%= form.text_field :phone, id: :space_phone, class: 'form-control' %>
   </div>
-
-  <div class="field form-group">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :space_description, class: 'form-control' %>
   </div>
 
+  <div class="col-md-6">
+    <div class="field form-group">
+      <%= form.label :description %>
+      <%= form.text_area :description, id: :space_description, class: 'form-control' %>
+    </div>
+    <div class="actions">
+      <%= form.submit class: 'btn btn-success' %>
+    </div>
+  </div>
 
           <!-- amenities -->
 
@@ -61,4 +67,5 @@
       </div>
     </div>
   </div>
-<% end %>
+
+</section>
