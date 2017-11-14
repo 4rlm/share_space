@@ -6,12 +6,10 @@ class SpacesController < ApplicationController
   # GET /spaces
   # GET /spaces.json
   def index
-    # @spaces = Space.all
+    @spaces = Space.all
 
     # @search = Space.search(params[:q])
     # @spaces = @search.result
-
-
 
     @q = Space.ransack(params[:q])
     # @spaces = @q.result.includes(:addresses)

@@ -3,5 +3,6 @@ class HomeController < ApplicationController
 
 
   def index
+    @spaces = Space.limit(6)
   end
 end
