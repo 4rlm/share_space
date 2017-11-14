@@ -1,18 +1,48 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 #main-wrapper {
-    margin-top: 50px !important;
+    margin-top: 100px !important;
+    background-color: #98ced7 !important;
 }
 
 .intro-text {
-    padding-top: 100px !important;
-    padding-bottom: 50px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+section {
+  padding-top:  40px !important;
+  padding-bottom:  40px !important;
+}
+h3.section-subheading {
+  margin-bottom: 50px !important;
+}
+
+.header-content {
+  margin: 0 auto !important;
+}
+
+
+#mainNav {
+  background-color: #fff !important;
+}
+
+.navbar-toggler {
+  color: #000 !important;
+}
+.nav-link:hover {
+  color: #98ced7 !important;
+}
+
+#about {
+  padding-top:  50px !important;
 }
 
 .main-search {
     padding-top: 50px;
     padding-bottom: 0px;
 }
+
+#portfolio .portfolio-item .portfolio-link .portfolio-hover {
+    background: #98ced7c4 !important;
+}
+
 @import "theme/agency.scss"; // adam replaced agency.min with this, so each theme scss file can be compiled properly.
