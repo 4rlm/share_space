@@ -40,16 +40,30 @@
             <%= form.label :description %>
             <%= form.text_area :description, id: :space_description, class: 'form-control' %>
           </div>
-          <div class="actions">
-            <%= form.submit class: 'btn btn-success' %>
-          </div>
+
+        </div>
+      </div>
+
+      <%= form.hidden_field :user_id, :value => @current_user.id %>
+
+      <h4>Amenities</h4>
+        <div class="field form-group">
+          <table class="table table-bordered table-hover table-striped text-nowrap">
+              <% Amenity.all.each do |amenity| %>
+              <tr>
+                <td><%= "#{amenity.name}" %></td>
+                <td><%= check_box_tag "space[amenity_ids][]", amenity.id %></td>
+              </tr>
+              <% end %>
+          </table>
         </div>
 
-          <%= form.hidden_field :user_id, :value => @current_user.id %>
+        <div class="actions">
+          <%= form.submit class: 'btn btn-success pull-right' %>
+        </div>
 
-        <% end %>
       </div>
-    </div>
+      <% end %>
   </div>
 
 </section>
