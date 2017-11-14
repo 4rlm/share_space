@@ -1,18 +1,11 @@
-<h3>Addresses</h3>
-
-<div class="row">
-
+<!-- <div class="row"> -->
   <!-- GEOCODING MAP QUERY - TESTING - ADAM -->
   <%= form_tag addresses_path, :method => :get do %>
-    <p>
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "Search Near", :name => nil %>
-    </p>
+    <p><%= text_field_tag :search, params[:search] %><%= submit_tag "Search Near", :name => nil %></p>
   <% end %>
+<!-- </div> -->
 
-</div>
-
-<div class="row">
+<!-- <div class="row"> -->
   <table class="table table-bordered table-hover table-striped text-nowrap">
   <thead>
     <tr>
@@ -53,7 +46,7 @@
   </tbody>
 </table>
 
-</div>
+<!-- </div> -->
 
 <%= link_to 'New Address', new_address_path, class: "btn btn-success" %>
 

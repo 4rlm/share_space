@@ -33,13 +33,12 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @booking = Booking.new(booking_params)
-
     respond_to do |format|
       if @booking.save
-        format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
+        format.html { redirect_to Space.find(Desk.find(@booking.desk_id).space_id), notice: 'Booking was successfully created.' }
         format.json { render :show, status: :created, location: @booking }
       else
-        format.html { render :new }
+        format.html { redirect_to Space.find(Desk.find(@booking.desk_id).space_id), notice: 'ERROR. Dates unavailable. Please try again.'}
         format.json { render json: @booking.errors, status: :unprocessable_entity }
       end
     end
@@ -50,7 +49,7 @@ class BookingsController < ApplicationController
   def update
     respond_to do |format|
       if @booking.update(booking_params)
-        format.html { redirect_to @booking, notice: 'Booking was successfully updated.' }
+        format.html { redirect_to Space.find(Desk.find(@booking.desk_id).space_id), notice: 'Booking was successfully updated.' }
         format.json { render :show, status: :ok, location: @booking }
       else
         format.html { render :edit }
@@ -77,6 +76,6 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:booking_date, :desk_id, :user_id)
+      params.require(:booking).permit(:start_date, :end_date, :desk_id, :user_id)
     end
 end

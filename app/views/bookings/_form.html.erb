@@ -1,25 +1,37 @@
 <%= form_with(model: booking, remote: true) do |form| %>
-  <% if booking.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+  <%if booking %>
+    <% if booking.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
 
-      <ul>
-      <% booking.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+        <ul>
+        <% booking.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <%end%>
 
-  <div class="field form-group field">
-    <%= form.label :booking_date %>
-    <%= form.datetime_select :booking_date, id: :booking_booking_date, class: 'form-control' %>
-  </div>
 
+<div class="field form-group field">
+    <%= form.label :start_date%>
+    <%= form.date_field :start_date, as: :date, id: :booking_start_date, class: 'form-control' %>
+</div>
+<div class="field form-group field">
+    <%= form.label :end_date%>
+    <%= form.date_field :end_date, as: :date, id: :booking_end_date, class: 'form-control' %>
+</div>
+
+
+<% if @desk %>
+  <%= form.hidden_field :desk_id, value: @desk.id %>
+<%else%>
   <div class="field form-group field">
     <%= form.label :desk_id %>
     <%= form.number_field :desk_id, id: :booking_desk_id, class: 'form-control' %>
   </div>
+ <%end%>
 
   <div class="field form-group field">
     <%= form.label :user_id %>

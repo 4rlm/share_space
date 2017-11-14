@@ -1,56 +1,20 @@
+<div class="row">
+  <p><strong>Space: </strong><%= @address.space.name %></p>
+  <p><strong>Address: </strong><%= @address.full_address %></p>
+</div>
 
 <div class="row">
+  <%= render 'addresses/embeded_map_partial', address: @address %>
+</div>
 
-  <div class="col-md-6">
-    <%#= binding.pry %>
+<div class="row">
+  <%= link_to 'Edit', edit_address_path(@address) %>
 
-    <p>
-      <strong>Space:</strong>
-      <%= @address.space_id %>
-    </p>
 
-    <p>
-      <strong>Street:</strong>
-      <%= @address.street %>
-    </p>
-
-    <p>
-      <strong>Unit:</strong>
-      <%= @address.unit %>
-    </p>
-
-    <p>
-      <strong>City:</strong>
-      <%= @address.city %>
-    </p>
-
-    <p>
-      <strong>State:</strong>
-      <%= @address.state %>
-    </p>
-
-    <p>
-      <strong>Zip:</strong>
-      <%= @address.zip %>
-    </p>
-
-    <p>
-      <strong>Country:</strong>
-      <%= @address.country %>
-    </p>
-
-  </div>
-
-  <div class="col-md-6">
-    <div class="row">
-      <%= render 'addresses/embeded_map_partial', address: @address %>
-    </div>
-  </div>
+<%if !@space %>
+  <%= link_to 'Edit', edit_address_path(@address) %>
+ | <%= link_to 'Back', addresses_path %>
+ <%end%>
 
 </div>
 
-
-<%= link_to 'Edit', edit_address_path(@address) %>
- <%if !@space %>
- | <%= link_to 'Back', addresses_path %>
- <%end%>

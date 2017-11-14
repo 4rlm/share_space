@@ -12,6 +12,4 @@ class Space < ApplicationRecord
   has_many :amenities, through: :space_amenities
   has_many :bookings, through: :desks, dependent: :destroy
 
-
-
 end

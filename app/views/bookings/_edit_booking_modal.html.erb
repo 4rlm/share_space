@@ -1,0 +1,23 @@
+<!-- MODAL BUTTONS -->
+<button type="button" class="btn btn-sm" style="color: blue; background: white;" data-toggle="modal" data-target="#editBookingModal"><%= icon('pencil-square-o') %></button>
+
+<!-- Modal -->
+  <div class="modal fade" id="editBookingModal" role="dialog">
+    <div class="row modal-dialog">
+
+      <!-- Modal content-->
+      <div class="col-md-6 modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="color: black;">Update Booking <%= icon('pencil-square-o') %></h4>
+        </div>
+
+        <!-- Modal body-->
+          <div class="modal-body">
+            <%= render 'bookings/form', method: :put, booking: @booking %>
+        </div>
+
+      </div>
+
+    </div>
+  </div>

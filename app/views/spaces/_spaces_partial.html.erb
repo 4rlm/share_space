@@ -12,7 +12,12 @@
         </a>
         <div class="portfolio-caption">
           <h4><%= link_to space.name, space %></h4>
+          <%#= binding.pry %>
+          <% if space.address %>
           <p class="text-muted"><%= space.address.street %></p>
+          <% else %>
+          <p class="text-muted">Great Location!</p>
+          <% end %>
         </div>
       </div>
   <% end %>
