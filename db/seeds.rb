@@ -87,7 +87,8 @@ end
 #Create bookings
 10.times do
   Booking.create!({
-    booking_date: Faker::Date.forward(60),
+    start_date: Faker::Date.forward(20),
+    end_date: Faker::Date.forward(60),
     desk_id: Desk.all.sample.id,
     user_id: User.all.sample.id
     })
