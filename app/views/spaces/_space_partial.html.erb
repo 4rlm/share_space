@@ -1,5 +1,5 @@
 <div class="row">
-  <% if @space.present? && @space.photos.present? %>
+  <% if @space.present? %>
   <% @photos = SpacesHelper.return_photos_with_same_space_id(@space) %>
 
     <div class="col-md-12 carousel-container">
@@ -24,7 +24,7 @@
 
           </div>
 
-          <% if @photos.count > 1 %>
+          <% if !@photos.present? %>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="sr-only">Previous</span>
@@ -67,27 +67,7 @@
         <div class=""> <!-- DESKS -->
           <h3> Details </h3>
 
-<<<<<<< HEAD
-    <div class=""> <!-- DESKS -->
-      <h3> Details </h3>
 
-      <% @space.desks.each do |desk| %>
-        <p><%= desk.description%></p>
-      <% end %>
-
-      <h4> Desks available in this space </h4>
-      <h5> <%= @space.desks.length %></h4>
-      <%= render 'bookings/add_booking_modal', booking: Booking.new %>
-
-      <div id="add-desks"> <!-- ADD DESK MODAL -->
-        <% if @current_user && (@current_user == @space.user || @current_user.role == "admin") %>
-          <%= render partial: 'desks/add_desk_modal' %>
-        <%end%>
-      </div>
-    </div>
-    <hr>
-  </div>
-=======
           <% @space.desks.each do |desk| %>
           <p><%= desk.description%></p>
           <% end %>
@@ -104,7 +84,6 @@
           </div>
           <hr>
         </div>
->>>>>>> 81feac48251bff5f179d9259737e038dcb5ddb39
 
     <div class="col-md-6"> <!-- START RIGHT SIDE COLUMN -->
 
