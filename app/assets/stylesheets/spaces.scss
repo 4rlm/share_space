@@ -3,7 +3,34 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .carousel-inner > .carousel-item > img {
-  max-height: 400px;
+  width: 100%;
+  margin-top: -120px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  display: none !important;
+}
+
+.carousel-control-prev, 
+.carousel-control-next {
+  &:hover {
+    background: transparent;
+  }
+}
+
+iframe {
+  width: 100% !important;
+}
+
+.space-details {
+  margin-top: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+.map-container {
+  padding-top: 50px;
 }
 
 
@@ -27,5 +54,10 @@ section#newSpace {
         height: 248px;
       }
     }
+  }
+
+  .carousel-container {
+    max-height: 350px;
+    overflow: hidden;
   }
 

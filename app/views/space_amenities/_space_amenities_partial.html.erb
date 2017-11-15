@@ -1,11 +1,9 @@
-<table class="table table-bordered table-hover table-striped text-nowrap">
+<div class="amenities-container row">
   <% @space_amenities.each do |space_amenity| %>
-    <tr>
-      <td><%= space_amenity.name %></td>
-      <td><%= link_to space_amenity, remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
-        <%= icon('trash') %>
-        <% end %>
-      </td>
-    </tr>
+  
+      <div class="col-md-6"><%= space_amenity.name %></div>
+  
+
   <% end %>
-</table>
+  <ul>
+</div>

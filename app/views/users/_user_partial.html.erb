@@ -1,69 +1,51 @@
+<% if @current_user && (@current_user == user || @current_user.role == "admin") %>
 <div class="row">
+  <div class="col-sm-4">
+    <div class="team-member">
+      <img class="mx-auto rounded-circle" <%= image_tag "logo.png" %>
+        <h4><%= link_to user.username.capitalize, user %></h4>
+          <p class="text-muted">Local Host</p>
+          <p class="text-muted"><%= user.email %></p>
+          <ul class="list-inline social-buttons">
+            <li class="list-inline-item">
+              <%= link_to edit_user_path do %>
+              <%= icon('user')%>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <%= link_to user, remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <%= icon('trash') %>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <%= link_to new_space_path do %>
+              <%= icon('pencil') %>
+              </a>
+            </li>
+          </ul>
+    </div>
+  </div>
 
-
-  <div class="row" id="userProfile">
-    <table class="table table-bordered table-hover table-striped text-nowrap">
-      <tr>
-        <th>Username <%= icon('user') %></th>
-        <th>Email <%= icon('envelope') %></th>
-        <th>Updated <%= icon('calendar') %></th>
-
-        <% if @current_user && (@current_user == user || @current_user.role == "admin") %>
-          <!-- <th>Post New Article <%#= icon('rss') %></th> -->
-          <th colspan="2">Manage <%= icon('sliders') %></th>
+  <div class="col-md-8 space-details">
+    <h3> Your Spaces </h3> 
+    <% user.spaces.each do |space| %>
+      <p><%= link_to space.name, space_path(space) %></p>
         <% end %>
-
-      </tr>
-      <tr>
-        <td><%= link_to user.username.capitalize, user %></td>
-        <td><%= user.email %></td>
-        <td><%= user.updated_at.strftime('%x')%></td>
-
-        <%# if @current_user && (@current_user == user || @current_user.role == "admin") %>
-          <td><%= link_to edit_user_path(user) do %>
-            <%= icon('pencil-square-o') %>
-            <% end %>
-          </td>
-
-          <td><%= link_to user, remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <%= icon('trash') %>
-            <% end %>
-          </td>
-
-        <%# end %>
-
-      </tr>
-    </table>
-  </div>
-
-  <hr>
-
-
-  <div class="row" id="userProfileArea">
-      <% @profile = user.profile %>
-      <%= render partial: 'profiles/profile_partial', profile: @profile %>
-  </div>
-
-  <hr>
-
-
-
-  <div class="row" id="#userProperties">
-    <% if user.spaces && user.spaces.count > 0 %>
-      <% @spaces = user.spaces %>
-      <%= render 'spaces/spaces_partial', spaces: @spaces %>
+    <hr>
+      <h3> Your Bookings </h3> 
+      <p> need to iterate through bookings - not being created right now?</p>
+    <% user.bookings.each do |booking| %>
+      <h4><%= booking.id %></h4>
     <% end %>
-    <%= link_to 'New Space', new_space_path, class: "btn btn-success btn-xs pull-right" %>
+    <hr>
   </div>
 
 
-  <!-- <div id="#userPhotos" class="row"> -->
-    <!-- <h3>Photos: <%#= @photos.count %></h3> -->
-    <!-- PARTIAL LINK TO PHOTOS/INDEX (VIEW ALL) -->
-    <%#= render 'photos/photos_partial', photos: user.photos %>
-  <!-- </div> -->
-
-  <hr>
+    <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+</div>
 
 
 
@@ -77,11 +59,9 @@
         <div id="user-photo">
           <%= link_to image_tag(photo.image.url(:thumb)), photo.image.url, target: '_blank', width: 175 %><br>
           <% if @current_user && (@current_user == @user || @current_user.role == "admin") %>
-
             <%= link_to photo, remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
               <%= icon('trash') %>
             <% end %>
-
           <% end %>
         </div>
       <% end %>
@@ -101,27 +81,10 @@
   <hr>
 
 
-  <div class="row">
-
-    <h3>TESTING THE NEW LOGIN MODAL LINK - LATER MOVE TO MAIN NAV.</h3>
-
-    <div class="row" id="">
-      <!-- UPLOAD AVATARS TO USER PROFILE (ONLY ADMIN AND USER) -->
-      <%= render partial: 'users/login_register_modal' %>
-    </div>
-
-  </div>
-
-  <hr>
-
-  <div class="row">
+ 
     <h3>temporary links below</h3>
 
     <%= render partial: 'shared/nav_user_partial' %>
 
   </div>
 
-
-
-
-</div>

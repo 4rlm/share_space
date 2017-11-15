@@ -1,6 +1,6 @@
 #main-wrapper {
     margin-top: 100px !important;
-    background-color: #98ced7 !important;
+    background-color: #FCF9F9 !important;
 }
 
 .intro-text {
@@ -22,16 +22,37 @@ h3.section-subheading {
 
 
 #mainNav {
-  background-color: #fff !important;
+  background-color: white !important;
 }
 
 .navbar-toggler {
-  color: #000 !important;
+  color: #98ced7c4 !important;
 }
-.nav-link:hover {
-  color: #98ced7 !important;
+.nav-link {
+  &:hover {
+    background-color: #F5F5F5 !important;
+
+  }
 }
 
+.cta {
+  background-color: #98ced7c4 !important;
+}
+.btn-primary:hover {
+  background-color: #F0B67F !important;
+}
+a {
+  &:hover{
+    background-color: #F5F5F5 !important;
+
+  }
+}
+
+.portfolio-caption a {
+  &:hover{
+    background-color: transparent !important;
+  }
+}
 #about {
   padding-top:  50px !important;
 }
@@ -45,4 +66,22 @@ h3.section-subheading {
     background: #98ced7c4 !important;
 }
 
+#mainNav .navbar-nav .nav-item .nav-link{
+  color: #98ced7c4 !important;
+}
+
+.timeline:before{
+  background-color: #F7A278 !important;
+}
+
+.timeline > li .timeline-image {
+  background-color: #98ced7c4 !important;
+  
+}
+
+.portfolio-caption a {
+   &:hover {
+    color: #F0B67F; 
+  }
+}
 @import "theme/agency.scss"; // adam replaced agency.min with this, so each theme scss file can be compiled properly.

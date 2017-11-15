@@ -1,3 +1,5 @@
+<div class="row">
+  <div class="col-md-12 carousel-container">
 <div id="carouselExampleControls" class="carousel slide " data-ride="carousel">
   <div class="carousel-inner" role="listbox">
 
@@ -6,7 +8,7 @@
       <% photos = @space.photos %>
         <%= image_tag photos.first.image %>
       <%else%>
-        <%= image_tag "default_office" %>
+        <%= image_tag "office4.jpg" %>
       <%end%>
 
     </div>
@@ -31,103 +33,75 @@
     </a>
     <%end%>
     <%end%>
+  </div>
 </div>
 
-<div class="row">
 
-  <div class="col-md-6"> <!-- START LEFT SIDE COLUMN -->
+<div class="row map-row" >
 
-    <div class="row">
-      <h5>Space Details</h5>
-    </div>
-
-    <div class="row"> <!-- SPACE DETAILS -->
-      <div class="row">
-        <p><strong>Name:</strong><%= @space.name %></p>
-        <p><strong>Website:</strong><%= @space.website %></p>
-        <p><strong>Phone:</strong><%= @space.phone %></p>
-        <p><strong>Manager:</strong><% host = @space.user %><%= link_to host.profile.fullname, user_path(host) %></p>
-      </div>
-
-      <div class="row">
-        <%= link_to 'Edit', edit_space_path(@space) %><br><br>
-        <%if !@space %>
-        | <%= link_to 'Back', spaces_path %>
-        <%end%>
+  <div class="col-md-6 space-details"> <!-- START LEFT SIDE COLUMN -->
+    <h3><%= @space.name %></h3>
+    <div class=""> <!-- SPACE DETAILS -->
+      <div class="">
+        <p><strong>Website: </strong><%= @space.website %></p>
+        <p><strong>Phone: </strong><%= @space.phone %></p>
+        <p><strong>Manager: </strong><% host = @space.user %><%= link_to host.profile.fullname, user_path(host) %></p>
       </div>
     </div>
 
     <hr>
 
-    <div class="row"> <!-- AMENITIES -->
-
+    <div class=""> <!-- AMENITIES -->
       <h3>Amenities</h3>
+    </div>
+    <div class="">
       <% if @space.amenities.count > 0 %>
       <% @space_amenities = @space.amenities %>
       <%= render 'space_amenities/space_amenities_partial', space_amenities: @space_amenities %>
-      <%= link_to 'Edit Amenities', edit_space_path(@space) %>
-      <% else %>
-      <%= link_to 'Add Amenities', edit_space_path(@space) %>
       <% end %>
     </div>
-
     <hr>
 
 
-    <div class="row"> <!-- DESKS -->
-      <h3>Desks</h3>
 
-      <div class="row desk_details">
-        <% @desks = @space.desks %>
-        <% if @desks.count > 0 %>
-        <h2 id="desk_icon">Desks <%= icon('cubes') %></h2>
-        <% @desks.each do |desk|%>
-        <% @desk = desk %>
-        <%= render partial: 'desks/desk_partial', desk: @desk %><br>
-        <% if desk.bookings.count > 0 %>
-        <button type="button" class="btn-sm btn-primary display_bookings">View Bookings</button>
-        <div id="desk_bookings">
-          <% @desk.bookings.each do |booking|%>
-          <% @booking = booking %>
-          <%= render partial: 'bookings/booking_partial', booking: @booking %><br>
-          <%end%>
-        </div>
-        <%end%>
-        <%end%>
-        <%end%>
-      </div>
+    <div class=""> <!-- DESKS -->
+      <h3> Details </h3>
+    
+      <% @space.desks.each do |desk| %>
+        <p><%= desk.description%></p>
+      <% end %>
+  
+      <h4> Desks available in this space </h4>
+      <h5> <%= @space.desks.length %></h4>
+      <%= render 'bookings/add_booking_modal', booking: Booking.new %>
 
       <div id="add-desks"> <!-- ADD DESK MODAL -->
         <% if @current_user && (@current_user == @space.user || @current_user.role == "admin") %>
-        <%= render partial: 'desks/add_desk_modal' %>
+          <%= render partial: 'desks/add_desk_modal' %>
         <%end%>
-
-        <div class="row"> <!-- BOOKINGS -->
-          <h4>Bookings</h4>
-        </div>
-
       </div>
     </div>
-
     <hr>
-
-  </div> <!-- END OF LEFT SIDE COLUMN -->
+  </div> 
 
   <div class="col-md-6"> <!-- START RIGHT SIDE COLUMN -->
 
     <!-- address details and map -->
-    <div class="row address_details">
-      <h3>Address</h3>
+    <div class="address_details">
 
       <% if !@space.address.nil? %>
-      <% @address = @space.address %>
-      <%= render 'addresses/address_partial', address: @address %>
+
+        <% @address = @space.address %>
+       <div class="map-container">
+          <%= render 'addresses/embeded_map_partial', address: @address %>
+        </div>
       <% else %>
-      <div id="add-address">
-        <% if @current_user && (@current_user == @space.user || @current_user.role == "admin") %>
-        <%= render partial: 'addresses/add_address_modal' %><br>
-        <%end%>
-      </div>
+        <div id="add-address">
+          <% if @current_user && (@current_user == @space.user || @current_user.role == "admin") %>
+            <%= render partial: 'addresses/add_address_modal' %><br>
+          <%end%>
+        </div>
+
       <% end %>
     </div>
 
@@ -135,7 +109,7 @@
 
     <div class="row" id="space-image-gallery"> <!-- IMAGE GALLERY -->
 
-      <div class="row">
+      <div class="">
         <% photos = @space.photos %>
         <% if photos %>
         <% photos.each do |photo| %>
@@ -166,3 +140,5 @@
 
 
 </div>
+
+
