@@ -1,11 +1,14 @@
 <table class="table table-bordered table-hover table-striped text-nowrap">
   <tr>
     <th>Desk ID</th>
+    <th>Price</th>
     <th>Space Name</th>
+    <th>Description</th>
     <th colspan="2">Manage <%= icon('sliders') %></th>
   </tr>
   <tr>
     <td><%= @desk.id %></td>
+    <td>$ <%= @desk.price %></td>
     <td><%= @desk.space.name %></td>
     <td><%= @desk.description %></td>
 

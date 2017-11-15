@@ -27,6 +27,12 @@
     <%= form.text_area :description, id: :desk_description, class: 'form-control' %>
   </div>
 
+  <div class="field form-group field">
+    <%= form.label :price %>
+    <%= form.number_field :price, step: "0.01", id: :price_description, class: 'form-control' %>
+    <%#= form.number_field :price, id: :price_description, class: 'form-control' %>
+  </div>
+
   <div class="actions">
     <%= form.submit class: 'btn btn-success pull-right'  %>
   </div>

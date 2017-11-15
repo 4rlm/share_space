@@ -17,7 +17,7 @@ class DesksController < ApplicationController
       format.html # show.html.erb
       format.js # show.js.erb
     end
-    
+
   end
 
   # GET /desks/new
@@ -33,6 +33,7 @@ class DesksController < ApplicationController
   # POST /desks.json
   def create
     @desk = Desk.new(desk_params)
+    binding.pry
 
     respond_to do |format|
       if @desk.save
@@ -48,6 +49,8 @@ class DesksController < ApplicationController
   # PATCH/PUT /desks/1
   # PATCH/PUT /desks/1.json
   def update
+    binding.pry
+    
     respond_to do |format|
       if @desk.update(desk_params)
         format.html { redirect_to Space.find(@desk.space_id), notice: 'Desk was successfully updated.' }
