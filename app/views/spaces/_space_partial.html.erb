@@ -52,30 +52,36 @@
 
 
     <div class=""> <!-- DESKS -->
-
-      <div class="row desk_details">
-        <h3> Desks available in this space </h3>
+      <h3> Details </h3>
+      <p> <%= @space.desks.first.description%></p>
+  
+      <h4> Desks available in this space </h4>
+      <h5> <%= @space.desks.length %></h4>
+      <a class="cta btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#">Book a desk</a>
+  
+      <div class="row">
+        
         <% @desks = @space.desks %>
         <% if @desks.count > 0 %>
-        <% @desks.each do |desk|%>
-          <% @desk = desk %>
-          <%= render partial: 'desks/desk_partial', desk: @desk %><br>
-          <% if desk.bookings.count > 0 %>
-            <button type="button" class="btn-sm btn-primary display_bookings">View Bookings</button>
-            <div id="desk_bookings">
-              <% @desk.bookings.each do |booking|%>
-                <% @booking = booking %>
-                <%= render partial: 'bookings/booking_partial', booking: @booking %><br>
-              <%end%>
-            </div>
+          <% @desks.each do |desk|%>
+            <% @desk = desk %>
+            <%= render partial: 'desks/desk_partial', desk: @desk %><br>
+            <% if desk.bookings.count > 0 %>
+              <button type="button" class="btn-sm btn-primary display_bookings">View Bookings</button>
+              <div id="desk_bookings">
+                <% @desk.bookings.each do |booking|%>
+                  <% @booking = booking %>
+                  <%= render partial: 'bookings/booking_partial', booking: @booking %><br>
+                <%end%>
+              </div>
+            <%end%>
           <%end%>
         <%end%>
-      <%end%>
       </div>
 
       <div id="add-desks"> <!-- ADD DESK MODAL -->
         <% if @current_user && (@current_user == @space.user || @current_user.role == "admin") %>
-        <%= render partial: 'desks/add_desk_modal' %>
+          <%= render partial: 'desks/add_desk_modal' %>
         <%end%>
 
         <div class="row"> <!-- BOOKINGS -->

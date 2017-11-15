@@ -25,19 +25,27 @@
           </ul>
     </div>
   </div>
+
+  <div class="col-md-8 space-details">
+    <h3> Your Spaces </h3> 
+    <% user.spaces.each do |space| %>
+      <p><%= link_to space.name, space_path(space) %></p>
+        <% end %>
+    <hr>
+      <h3> Your Bookings </h3> 
+    <% user.bookings.each do |booking| %>
+      <h4><%= booking.id %></h4>
+        <% end %>
+        <hr>
+
+  </div>
+
+
     <% end %>
     <% end %>
   <% end %>
 <% end %>
 </div>
-    <% if user.spaces && user.spaces.count > 0 %>
-      <% @spaces = user.spaces %>
-    <% end %>
-
-
-
-
-  <hr>
 
 
 
@@ -73,20 +81,7 @@
   <hr>
 
 
-  <div class="row">
-
-    <h3>TESTING THE NEW LOGIN MODAL LINK - LATER MOVE TO MAIN NAV.</h3>
-
-    <div class="row" id="">
-      <!-- UPLOAD AVATARS TO USER PROFILE (ONLY ADMIN AND USER) -->
-      <%= render partial: 'users/login_register_modal' %>
-    </div>
-
-  </div>
-
-  <hr>
-
-  <div class="row">
+ 
     <h3>temporary links below</h3>
 
     <%= render partial: 'shared/nav_user_partial' %>
