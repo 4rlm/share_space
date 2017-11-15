@@ -27,15 +27,20 @@
   </div>
 
   <div class="col-md-8 space-details">
-    <h3> Your Spaces </h3> 
+    <h3> Your Spaces </h3>
     <% user.spaces.each do |space| %>
       <p><%= link_to space.name, space_path(space) %></p>
         <% end %>
     <hr>
-      <h3> Your Bookings </h3> 
-      <p> need to iterate through bookings - not being created right now?</p>
+      <h3> Your Bookings </h3>
     <% user.bookings.each do |booking| %>
-      <h4><%= booking.id %></h4>
+      <p><strong>Booking Id:</strong> <%= booking.id %> |
+        <strong>Location:</strong> <%space = Space.find(Desk.find(booking.desk_id).space_id)%><%= link_to space.name, space_path(space) %> |
+        <strong>Duration:</strong> <%=booking.start_date.strftime("%a %b %d, %Y")%> - <%=booking.end_date.strftime("%a %b %d, %Y")%> |
+        <strong>Desk Id: </strong><%=booking.desk_id%> |
+        <%= link_to booking, remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <%= icon('trash') %><%end%>
+        </p>
     <% end %>
     <hr>
   </div>
@@ -81,10 +86,10 @@
   <hr>
 
 
- 
-    <h3>temporary links below</h3>
 
-    <%= render partial: 'shared/nav_user_partial' %>
+   <!--  <h3>temporary links below</h3>
 
+    <%#= render partial: 'shared/nav_user_partial' %>
+ -->
   </div>
 
