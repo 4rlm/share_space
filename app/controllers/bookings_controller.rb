@@ -12,7 +12,7 @@ class BookingsController < ApplicationController
   # GET /bookings/1
   # GET /bookings/1.json
   def show
-    
+
     respond_to do |format|
       format.html # show.html.erb
       format.js # show.js.erb
@@ -63,7 +63,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking.destroy
     respond_to do |format|
-      format.html { redirect_to bookings_url, notice: 'Booking was successfully destroyed.' }
+      format.html { redirect_to @current_user, notice: 'Booking was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
