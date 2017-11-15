@@ -1,18 +1,35 @@
 <section class="bg-light" id="portfolio">
-<div class="row">
-  <% @spaces.each do |space| %>
-      <div class="col-md-4 col-sm-6 portfolio-item">
-        <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
-          <div class="portfolio-hover">
-            <div class="portfolio-hover-content">
-              <i class="fa fa-plus fa-3x"></i>
+  <div class="row">
+    <% @spaces.each do |space| %>
+
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fa fa-plus fa-3x"></i>
+              </div>
             </div>
-          </div>
 
-          <%#= binding.pry %>
+            <%#= binding.pry %>
 
-          <% if space.photos.present? %>
-            <% photo = space.photos.first %>
+            <%# if space.photos.present? %>
+            <% if space.present? && space.photos.present? %>
+              <% @photos = SpacesHelper.return_photos_with_same_space_id(space) %>
+              <% if @photos.present? %>
+                <% photo = @photos.first %>
+                <%#= binding.pry %>
+                <%#= link_to image_tag(@photo.image.url(:thumb), class: 'media-object'), space, class:'img-fluid' %>
+                <%= link_to image_tag(photo.image), space %>
+                <%#= render 'photos/photo_partial', photo: @photo %>
+              <% end %>
+            <% else %>
+              <img class="img-fluid" src="https://picture.liquidspace.com/Index/60649c70-c0ce-445f-aee3-43fdce3988fd?emptyImageUrl=https:%2f%2fcontent.liquidspace.com%2fImages%2fliquid-holder.jpg%3fv%3d-73115844&etag=piQl/jN4q2OvYPjWs+SPTg==s" alt="">
+            <% end %>
+
+          </a>
+
+          <div class="portfolio-caption">
+            <h4><%= link_to space.name, space %></h4>
             <%#= binding.pry %>
             <%#= link_to image_tag(photo.image.url(:thumb), class: 'media-object'), space, class:'img-fluid' %>
             <%= image_tag(photo.image, class: 'img-fluid space-image') %>
@@ -31,13 +48,11 @@
           <p class="text-muted">Great Location!</p>
           <% end %>
         </div>
-      </div>
-  <% end %>
-    </div>
+      <% end %>
+  </div>
   </div>
 
   <hr>
-
 
   <!-- DYNAMIC MAP PARTIAL BELOW -->
   <% @addresses = @spaces.collect(&:address).flatten %>
@@ -47,13 +62,11 @@
     <h4>Dynamic Map section</h4>
     <p>Pins of all Addresses returned in search.</p>
 
-      <div class="col-md-6">
-        <div class="row">
-          <%= render 'addresses/dynamic_map_partial', addresses: @addresses %>
-        </div>
+    <div class="col-md-6">
+      <div class="row">
+        <%= render 'addresses/dynamic_map_partial', addresses: @addresses %>
       </div>
-
+    </div>
   </div>
 
 </section>
-

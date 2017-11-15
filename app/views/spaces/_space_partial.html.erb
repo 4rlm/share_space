@@ -1,43 +1,45 @@
 <div class="row">
-  <div class="col-md-12 carousel-container">
-<div id="carouselExampleControls" class="carousel slide " data-ride="carousel">
-  <div class="carousel-inner" role="listbox">
+  <% if @space.present? && @space.photos.present? %>
+  <% @photos = SpacesHelper.return_photos_with_same_space_id(@space) %>
 
-    <div class="carousel-item active">
-      <% if @space.photos.present? %>
-      <% photos = @space.photos %>
-        <%= image_tag photos.first.image %>
-      <%else%>
-        <%= image_tag "office4.jpg" %>
-      <%end%>
+    <div class="col-md-12 carousel-container">
 
-    </div>
-    <% if photos %>
-      <% photos[1..-1].each do |photo| %>
-        <div class="carousel-item">
-        <%= image_tag photo.image %>
+      <div id="carouselExampleControls" class="carousel slide " data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+          <div class="carousel-item active">
+            <% if @photos %>
+              <%= image_tag @photos.first.image %>
+            <% else %>
+              <%= image_tag "office4.jpg" %>
+            <% end %>
+          </div>
+
+          <% if @photos %>
+            <% @photos[1..-1].each do |photo| %>
+              <div class="carousel-item">
+                <%= image_tag photo.image %>
+              </div>
+            <% end %>
+          <% end %>
+
+          </div>
+
+          <% if @photos.count > 1 %>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          <% end %>
       </div>
-        <%end%>
-    <%end%>
-
-  </div>
-  <% if @space.photos.present? %>
-  <% if photos.count > 1 %>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-    <%end%>
-    <%end%>
-  </div>
-</div>
+    </div>
 
 
-<div class="row map-row" >
+    <div class="row map-row" >
+
 
   <div class="col-md-6 space-details"> <!-- START LEFT SIDE COLUMN -->
     <h3><%= @space.name %></h3>
@@ -45,32 +47,34 @@
       <div class="">
         <p><strong>Website: </strong><%= @space.website %></p>
         <p><strong>Phone: </strong><%= @space.phone %></p>
-        <p><strong>Manager: </strong><% host = @space.user %><%= link_to host.profile.fullname, user_path(host) %></p>
+        <p><strong>Manager: </strong><%= @space.user.profile.fullname %></p>
       </div>
     </div>
 
-    <hr>
+        <hr>
 
-    <div class=""> <!-- AMENITIES -->
-      <h3>Amenities</h3>
-    </div>
-    <div class="">
-      <% if @space.amenities.count > 0 %>
-      <% @space_amenities = @space.amenities %>
-      <%= render 'space_amenities/space_amenities_partial', space_amenities: @space_amenities %>
-      <% end %>
-    </div>
-    <hr>
+        <div class=""> <!-- AMENITIES -->
+          <h3>Amenities</h3>
+        </div>
+        <div class="">
+          <% if @space.amenities.count > 0 %>
+          <% @space_amenities = @space.amenities %>
+          <%= render 'space_amenities/space_amenities_partial', space_amenities: @space_amenities %>
+          <% end %>
+        </div>
+        <hr>
 
+        <div class=""> <!-- DESKS -->
+          <h3> Details </h3>
 
-
+<<<<<<< HEAD
     <div class=""> <!-- DESKS -->
       <h3> Details </h3>
-    
+
       <% @space.desks.each do |desk| %>
         <p><%= desk.description%></p>
       <% end %>
-  
+
       <h4> Desks available in this space </h4>
       <h5> <%= @space.desks.length %></h4>
       <%= render 'bookings/add_booking_modal', booking: Booking.new %>
@@ -82,63 +86,80 @@
       </div>
     </div>
     <hr>
-  </div> 
+  </div>
+=======
+          <% @space.desks.each do |desk| %>
+          <p><%= desk.description%></p>
+          <% end %>
 
-  <div class="col-md-6"> <!-- START RIGHT SIDE COLUMN -->
+          <h4> Desks available in this space </h4>
+          <h5> <%= @space.desks.length %></h4>
+            <%= render 'bookings/add_booking_modal', booking: Booking.new %>
 
-    <!-- address details and map -->
-    <div class="address_details">
+            <div id="add-desks"> <!-- ADD DESK MODAL -->
+              <% if @current_user && (@current_user == @space.user || @current_user.role == "admin") %>
+              <%= render partial: 'desks/add_desk_modal' %>
+              <%end%>
+            </div>
+          </div>
+          <hr>
+        </div>
+>>>>>>> 81feac48251bff5f179d9259737e038dcb5ddb39
 
-      <% if !@space.address.nil? %>
+    <div class="col-md-6"> <!-- START RIGHT SIDE COLUMN -->
+
+      <!-- address details and map -->
+      <div class="address_details">
+
+        <% if !@space.address.nil? %>
 
         <% @address = @space.address %>
-       <div class="map-container">
+        <div class="map-container">
           <%= render 'addresses/embeded_map_partial', address: @address %>
         </div>
-      <% else %>
+        <% else %>
         <div id="add-address">
           <% if @current_user && (@current_user == @space.user || @current_user.role == "admin") %>
-            <%= render partial: 'addresses/add_address_modal' %><br>
+          <%= render partial: 'addresses/add_address_modal' %><br>
           <%end%>
         </div>
 
-      <% end %>
-    </div>
+        <% end %>
+      </div>
 
-    <hr>
+      <hr>
 
-    <div class="row" id="space-image-gallery"> <!-- IMAGE GALLERY -->
+      <div class="row" id="space-image-gallery"> <!-- IMAGE GALLERY -->
 
-      <div class="">
-        <% photos = @space.photos %>
-        <% if photos %>
-        <% photos.each do |photo| %>
-        <div id="space-photo">
-          <%= link_to image_tag(photo.image.url(:thumb)), photo.image.url, target: '_blank', width: 175 %><br>
-          <% if @current_user && (@current_user == photo.user || @current_user.role == "admin") %>
+        <div class="">
+          <%# photos = @space.photos %>
+          <% if @photos %>
+          <% @photos.each do |photo| %>
+          <div id="space-photo">
+            <%= link_to image_tag(photo.image.url(:thumb)), photo.image.url, target: '_blank', width: 175 %><br>
+            <% if @current_user && (@current_user == photo.user || @current_user.role == "admin") %>
 
-          <%= link_to photo, remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
-          <%= icon('trash') %>
+            <%= link_to photo, remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <%= icon('trash') %>
+            <% end %>
+
+            <% end %>
+          </div>
           <% end %>
-
           <% end %>
         </div>
-        <% end %>
-        <% end %>
+
+        <div class="row" id="space-image-gallery-text">
+          <!-- UPLOAD IMAGES TO SPACE (ONLY ADMIN AND SPACE HOST) -->
+          <% if @current_user && (@current_user == @space.user || @current_user.role == "admin") %>
+          <%= render partial: 'photos/upload_image_modal', space: @space %>
+          <% end %>
+        </div>
+
       </div>
 
-      <div class="row" id="space-image-gallery-text">
-        <!-- UPLOAD IMAGES TO SPACE (ONLY ADMIN AND SPACE HOST) -->
-        <% if @current_user && (@current_user == @space.user || @current_user.role == "admin") %>
-        <%= render partial: 'photos/upload_image_modal', space: @space %>
-        <% end %>
-      </div>
-
-    </div>
-
-  </div> <!-- END OF RIGHT SIDE COLUMN -->
+    </div> <!-- END OF RIGHT SIDE COLUMN -->
 
 
+  <% end %>
 </div>
-
-
