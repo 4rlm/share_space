@@ -29,10 +29,12 @@ iframe {
   text-align: center;
 }
 
+
 .space-image {
+  // min-height: 226px;
   img {
     width: 100%;
-    
+    // max-height: 226px;
   }
 }
 .map-container {
@@ -42,17 +44,17 @@ iframe {
 
 // Styling for the newSpace section
 section#newSpace {
-    background-color: #98ced7;
-    // background-image: url('../img/map-image.png');
-    background-repeat: no-repeat;
-    background-position: center;
-
-    .form-group {
-      margin-bottom: 25px;
-      input,
-      textarea {
-        padding: 20px;
-      }
+  background-color: #98ced7;
+  // background-image: url('../img/map-image.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  
+  .form-group {
+    margin-bottom: 25px;
+    input,
+    textarea {
+      padding: 20px;
+    }
       input.form-control {
         height: auto;
       }
@@ -61,9 +63,19 @@ section#newSpace {
       }
     }
   }
-
+  
   .carousel-container {
     max-height: 350px;
     overflow: hidden;
   }
+  
+  
+  .img-fluid {
+   height: 100% !important;
+   width: 100%;
+  }
 
+  .portfolio-link {
+    height: 220px !important;
+    overflow: hidden !important;
+  }

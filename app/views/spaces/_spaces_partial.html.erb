@@ -15,8 +15,7 @@
             <% photo = space.photos.first %>
             <%#= binding.pry %>
             <%#= link_to image_tag(photo.image.url(:thumb), class: 'media-object'), space, class:'img-fluid' %>
-           
-            <%= link_to image_tag(photo.image), space, class: 'img-fluid space-image' %>
+            <%= image_tag(photo.image, class: 'img-fluid space-image') %>
             <%#= render 'photos/photo_partial', photo: photo %>
           <% else %>
             <img class="img-fluid" src="https://picture.liquidspace.com/Index/60649c70-c0ce-445f-aee3-43fdce3988fd?emptyImageUrl=https:%2f%2fcontent.liquidspace.com%2fImages%2fliquid-holder.jpg%3fv%3d-73115844&etag=piQl/jN4q2OvYPjWs+SPTg==s" alt="">
