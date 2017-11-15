@@ -26,45 +26,29 @@
 
 
 
-
 <div class="row">
 
   <div class="col-md-6"> <!-- START LEFT SIDE COLUMN -->
-
-    <div class="row">
-      <h5>Space Details</h5>
-    </div>
-
-    <div class="row"> <!-- SPACE DETAILS -->
-      <div class="row">
-        <p><strong>Name:</strong><%= @space.name %></p>
-        <p><strong>Website:</strong><%= @space.website %></p>
-        <p><strong>Phone:</strong><%= @space.phone %></p>
-        <p><strong>Manager:</strong><% host = @space.user %><%= link_to host.profile.fullname, user_path(host) %></p>
-      </div>
-
-      <div class="row">
-        <%= link_to 'Edit', edit_space_path(@space) %><br><br>
-        <%if !@space %>
-        | <%= link_to 'Back', spaces_path %>
-        <%end%>
+    <h3><%= @space.name %></h3>
+    <div class=""> <!-- SPACE DETAILS -->
+      <div class="">
+        <p><strong>Website: </strong><%= @space.website %></p>
+        <p><strong>Phone: </strong><%= @space.phone %></p>
+        <p><strong>Manager: </strong><% host = @space.user %><%= link_to host.profile.fullname, user_path(host) %></p>
       </div>
     </div>
 
     <hr>
 
-    <div class="row"> <!-- AMENITIES -->
-
+    <div class=""> <!-- AMENITIES -->
       <h3>Amenities</h3>
+    </div>
+    <div class="">
       <% if @space.amenities.count > 0 %>
       <% @space_amenities = @space.amenities %>
       <%= render 'space_amenities/space_amenities_partial', space_amenities: @space_amenities %>
-      <%= link_to 'Edit Amenities', edit_space_path(@space) %>
-      <% else %>
-      <%= link_to 'Add Amenities', edit_space_path(@space) %>
       <% end %>
     </div>
-
     <hr>
 
 
@@ -110,16 +94,17 @@
   <div class="col-md-6"> <!-- START RIGHT SIDE COLUMN -->
 
     <!-- address details and map -->
-    <div class="row address_details">
-      <h3>Address</h3>
+    <div class="address_details">
 
       <% if !@space.address.nil? %>
         <% @address = @space.address %>
-        <%= render 'addresses/address_partial', address: @address %>
+       <div class="map-container">
+          <%= render 'addresses/embeded_map_partial', address: @address %>
+        </div>
       <% else %>
         <div id="add-address">
           <% if @current_user && (@current_user == @space.user || @current_user.role == "admin") %>
-          <%= render partial: 'addresses/add_address_modal' %><br>
+            <%= render partial: 'addresses/add_address_modal' %><br>
           <%end%>
         </div>
       <% end %>
@@ -129,7 +114,7 @@
 
     <div class="row" id="space-image-gallery"> <!-- IMAGE GALLERY -->
 
-      <div class="row">
+      <div class="">
         <% photos = @space.photos %>
         <% if photos %>
         <% photos.each do |photo| %>

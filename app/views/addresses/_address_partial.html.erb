@@ -1,11 +1,12 @@
+<div class="row map-container">
+  <%= render 'addresses/embeded_map_partial', address: @address %>
+</div>
+
 <div class="row">
   <p><strong>Space: </strong><%= @address.space.name %></p>
   <p><strong>Address: </strong><%= @address.full_address %></p>
 </div>
 
-<div class="row">
-  <%= render 'addresses/embeded_map_partial', address: @address %>
-</div>
 
 <div class="row">
   <%= link_to 'Edit', edit_address_path(@address) %>

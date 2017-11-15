@@ -4,7 +4,12 @@
 
 .carousel-inner > .carousel-item > img {
   width: 100%;
-  margin-top: -100px;
+  margin-top: -120px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  display: none !important;
 }
 
 .carousel-control-prev, 
@@ -12,6 +17,18 @@
   &:hover {
     background: transparent;
   }
+}
+
+iframe {
+  width: 100% !important;
+}
+
+.space-details {
+  padding-top: 20px
+}
+
+.map-container {
+  padding-top: 50px;
 }
 
 // Styling for the newSpace section
@@ -37,7 +54,7 @@ section#newSpace {
   }
 
   .carousel-container {
-    max-height: 500px;
+    max-height: 350px;
     overflow: hidden;
   }
 
