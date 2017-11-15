@@ -45,7 +45,7 @@
       <div class="">
         <p><strong>Website: </strong><%= @space.website %></p>
         <p><strong>Phone: </strong><%= @space.phone %></p>
-        <p><strong>Manager: </strong><% host = @space.user %><%= link_to host.profile.fullname, user_path(host) %></p>
+        <p><strong>Manager: </strong><%= @space.user.profile.fullname %></p>
       </div>
     </div>
 
@@ -66,11 +66,11 @@
 
     <div class=""> <!-- DESKS -->
       <h3> Details </h3>
-    
+
       <% @space.desks.each do |desk| %>
         <p><%= desk.description%></p>
       <% end %>
-  
+
       <h4> Desks available in this space </h4>
       <h5> <%= @space.desks.length %></h4>
       <%= render 'bookings/add_booking_modal', booking: Booking.new %>
@@ -82,7 +82,7 @@
       </div>
     </div>
     <hr>
-  </div> 
+  </div>
 
   <div class="col-md-6"> <!-- START RIGHT SIDE COLUMN -->
 
