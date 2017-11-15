@@ -1,17 +1,28 @@
 <div class="row">
   <div class="col-md-12 carousel-container">
-  <div id="carouselExampleControls" class="carousel slide " data-ride="carousel">
-    <div class="carousel-inner" role="listbox">
-      <div class="carousel-item active">
-        <%= image_tag "office1.jpg" %>
-      </div>
-      <div class="carousel-item">
+<div id="carouselExampleControls" class="carousel slide " data-ride="carousel">
+  <div class="carousel-inner" role="listbox">
+
+    <div class="carousel-item active">
+      <% if @space.photos.present? %>
+      <% photos = @space.photos %>
+        <%= image_tag photos.first.image %>
+      <%else%>
         <%= image_tag "office4.jpg" %>
-      </div>
-      <div class="carousel-item">
-        <%= image_tag "office3.jpg" %>
-      </div>
+      <%end%>
+
     </div>
+    <% if photos %>
+      <% photos[1..-1].each do |photo| %>
+        <div class="carousel-item">
+        <%= image_tag photo.image %>
+      </div>
+        <%end%>
+    <%end%>
+
+  </div>
+  <% if @space.photos.present? %>
+  <% if photos.count > 1 %>
     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
@@ -20,7 +31,8 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
-  </div>
+    <%end%>
+    <%end%>
   </div>
 </div>
 
@@ -51,8 +63,10 @@
     <hr>
 
 
+
     <div class=""> <!-- DESKS -->
       <h3> Details </h3>
+    
       <% @space.desks.each do |desk| %>
         <p><%= desk.description%></p>
       <% end %>
@@ -60,8 +74,6 @@
       <h4> Desks available in this space </h4>
       <h5> <%= @space.desks.length %></h4>
       <%= render 'bookings/add_booking_modal', booking: Booking.new %>
-
-
 
       <div id="add-desks"> <!-- ADD DESK MODAL -->
         <% if @current_user && (@current_user == @space.user || @current_user.role == "admin") %>
@@ -78,6 +90,7 @@
     <div class="address_details">
 
       <% if !@space.address.nil? %>
+
         <% @address = @space.address %>
        <div class="map-container">
           <%= render 'addresses/embeded_map_partial', address: @address %>
@@ -88,6 +101,7 @@
             <%= render partial: 'addresses/add_address_modal' %><br>
           <%end%>
         </div>
+
       <% end %>
     </div>
 

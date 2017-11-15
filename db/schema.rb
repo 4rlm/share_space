@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20171113223537) do
   create_table "desks", force: :cascade do |t|
     t.integer "space_id"
     t.string "description"
+    t.decimal "price", precision: 8, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

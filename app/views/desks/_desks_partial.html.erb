@@ -3,7 +3,9 @@
   <thead>
     <tr>
       <th>Desk ID</th>
+      <th>Price</th>
       <th>Space Name</th>
+      <th>Description</th>
       <th colspan="2">Manage <%= icon('sliders') %></th>
     </tr>
   </thead>
@@ -12,7 +14,9 @@
     <% @desks.each do |desk| %>
       <tr>
         <td><%= link_to desk.id, desk %></td>
+        <td>$ <%= desk.price %></td>
         <td><%= link_to desk.space.name, desk.space %></td>
+        <td><%= desk.description %></td>
 
         <td><%= link_to edit_desk_path(desk) do %>
           <%= icon('pencil-square-o') %>

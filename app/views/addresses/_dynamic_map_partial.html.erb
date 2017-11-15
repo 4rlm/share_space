@@ -1,7 +1,10 @@
 
 
-<% latitude = @addresses.first.latitude %>
-<% longitude = @addresses.first.longitude %>
+<%# latitude = @addresses.first.latitude %>
+<%# longitude = @addresses.first.longitude %>
+
+<%#= binding.pry %>
+
 <% @address = @addresses.first %>
 <!-- <%#= binding.pry %> -->
 
@@ -39,13 +42,16 @@
 
 
 
-    <%@addresses.each do |marker|%>
+    <% @addresses.each do |marker| %>
+    <% if marker && marker.latitude && marker.longitude %>
+    <%#= binding.pry %>
       addMarker({
-        coords: {lat: <%= marker.latitude%>, lng: <%= marker.longitude%>},
+        coords: {lat: <%= marker.latitude %>, lng: <%= marker.longitude %>},
         iconImage: "<%= asset_path('beachflag.png') %>",
         content: "<h5><%= marker.space.name %></h5><br><p><%= marker.full_address %><br><p><%= marker.space.description %></p>"
       });
-    <%end%>
+    <% end %>
+    <% end %>
 
     function addMarker(props){
       var marker = new google.maps.Marker({
