@@ -3,9 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .carousel-inner > .carousel-item > img {
-  max-height: 400px;
+  width: 100%;
+  margin-top: -100px;
 }
 
+.carousel-control-prev, 
+.carousel-control-next {
+  &:hover {
+    background: transparent;
+  }
+}
 
 // Styling for the newSpace section
 section#newSpace {
@@ -27,5 +34,10 @@ section#newSpace {
         height: 248px;
       }
     }
+  }
+
+  .carousel-container {
+    height: 500px;
+    overflow: hidden;
   }
 
