@@ -10,11 +10,6 @@ $(document).ready(function(){
     $("#desk_bookings").toggle();
   });
 
-  $('.input-daterange input').each(function() {
-    $(this).datepicker('clearDates');
-    console.log("Qdhfsdklfhsekfjleshfjklshfjkshfjks")
-});
-
 })
 
 
