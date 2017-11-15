@@ -33,11 +33,11 @@
         <% end %>
     <hr>
       <h3> Your Bookings </h3> 
+      <p> need to iterate through bookings - not being created right now?</p>
     <% user.bookings.each do |booking| %>
       <h4><%= booking.id %></h4>
-        <% end %>
-        <hr>
-
+    <% end %>
+    <hr>
   </div>
 
 
@@ -87,6 +87,4 @@
     <%= render partial: 'shared/nav_user_partial' %>
 
   </div>
-
-
 
