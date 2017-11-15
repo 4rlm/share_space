@@ -25,10 +25,9 @@
 </div>
 
 
+<div class="row map-row" >
 
-<div class="row">
-
-  <div class="col-md-6"> <!-- START LEFT SIDE COLUMN -->
+  <div class="col-md-6 space-details"> <!-- START LEFT SIDE COLUMN -->
     <h3><%= @space.name %></h3>
     <div class=""> <!-- SPACE DETAILS -->
       <div class="">
@@ -52,13 +51,12 @@
     <hr>
 
 
-    <div class="row"> <!-- DESKS -->
-      <h3>Desks</h3>
+    <div class=""> <!-- DESKS -->
 
       <div class="row desk_details">
+        <h3> Desks available in this space </h3>
         <% @desks = @space.desks %>
         <% if @desks.count > 0 %>
-        <h2 id="desk_icon">Desks <%= icon('cubes') %></h2>
         <% @desks.each do |desk|%>
           <% @desk = desk %>
           <%= render partial: 'desks/desk_partial', desk: @desk %><br>
@@ -81,7 +79,7 @@
         <%end%>
 
         <div class="row"> <!-- BOOKINGS -->
-          <h4>Bookings</h4>
+
         </div>
 
       </div>
