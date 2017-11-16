@@ -6,6 +6,17 @@
 .intro-text {
     padding-top: 0px !important;
     padding-bottom: 0px !important;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;    
+    
+}
+
+.timeline-heading {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+h2.text-uppercase{
+  font-family: 'Montserrat', sans-serif;
 }
 
 section {
@@ -14,6 +25,8 @@ section {
 }
 h3.section-subheading {
   margin-bottom: 50px !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-family: 600i !important;
 }
 
 .header-content {
@@ -42,9 +55,10 @@ h3.section-subheading {
   background-color: #F0B67F !important;
 }
 a {
+  font-family: 'Montserrat', sans-serif !important;
   &:hover{
     background-color: #F5F5F5 !important;
-
+    font-family: 600i !important;
   }
 }
 
