@@ -24,17 +24,13 @@
 </div>
 
 
-<% if @space.desks.count > 0 %>
-  <%= form.hidden_field :desk_id, value: @space.desks.sample.id %>
+<% if @desk %>
+<%= form.hidden_field :desk_id, value: @desk.id %>
 <%else%>
-  <% if @desk %>
-  <%= form.hidden_field :desk_id, value: @desk.id %>
-  <%else%>
-  <div class="field form-group field">
-    <%= form.label :desk_id %>
-    <%= form.number_field :desk_id, id: :booking_desk_id, class: 'form-control' %>
-  </div>
-  <%end%>
+<div class="field form-group field">
+  <%= form.label :desk_id %>
+  <%= form.number_field :desk_id, id: :booking_desk_id, class: 'form-control' %>
+</div>
 <%end%>
 
 <% if @current_user %>
