@@ -29,7 +29,7 @@ class AddressesController < ApplicationController
       format.html # show.html.erb
       format.js # show.js.erb
     end
-    
+
   end
 
   # GET /addresses/new
@@ -89,6 +89,6 @@ class AddressesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def address_params
-      params.require(:address).permit(:space_id, :street, :unit, :city, :state, :zip, :country)
+      params.require(:address).permit(:space_id, :street, :unit, :city, :state, :zip, :country, :full_address, :price_in_cents)
     end
 end

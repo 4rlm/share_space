@@ -32,16 +32,22 @@ class BookingsController < ApplicationController
   # POST /bookings
   # POST /bookings.json
   def create
-    @booking = Booking.new(booking_params)
+    # @booking = Booking.new(booking_params)
+    bookings = Booking.create_multiple_bookings(booking_params)
+    desk = Desk.find(booking_params[:desk_id])
+    space = desk.space
+
     respond_to do |format|
-      if @booking.save
-        format.html { redirect_to Space.find(Desk.find(@booking.desk_id).space_id), notice: 'Booking was successfully created.' }
-        format.json { render :show, status: :created, location: @booking }
+      if bookings.present?
+        format.html { redirect_to @current_user, notice: "Desk Booked"}
+        format.json { render :'user/show', status: :ok, location: @current_user }
       else
-        format.html { redirect_to Space.find(Desk.find(@booking.desk_id).space_id), notice: 'ERROR. Dates unavailable. Please try again.'}
-        format.json { render json: @booking.errors, status: :unprocessable_entity }
+        binding.pry
+        format.html { redirect_to space_path(space), notice: "Desk Not Available.  Please Try Again." }
+        format.json { render :'space/show', status: :ok, location: space }
       end
     end
+
   end
 
   # PATCH/PUT /bookings/1
@@ -61,7 +67,6 @@ class BookingsController < ApplicationController
   # DELETE /bookings/1
   # DELETE /bookings/1.json
   def destroy
-    @booking.destroy
     respond_to do |format|
       format.html { redirect_to @current_user, notice: 'Booking was successfully destroyed.' }
       format.json { head :no_content }
@@ -76,6 +81,6 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:start_date, :end_date, :desk_id, :user_id)
+      params.require(:booking).permit(:start_date, :end_date, :desk_id, :user_id, :reservation_date, :reservation_start_date, :reservation_end_date)
     end
 end

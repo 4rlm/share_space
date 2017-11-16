@@ -1,9 +1,20 @@
 class Address < ApplicationRecord
   belongs_to :space
 
+  attribute :price_in_cents, :integer
+  attribute :full_address, :string
+  
+
+
+  # attr_accessor :full_address
+  # attr_writer :full_address
+  before_validation :full_address
+
+
   def full_address
     [street, city, state, zip].compact.join(',')
   end
+
 
   geocoded_by :full_address
   after_validation :geocode

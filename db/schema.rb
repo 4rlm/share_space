@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20171113223537) do
   create_table "bookings", force: :cascade do |t|
     t.datetime "start_date"
     t.datetime "end_date"
+    t.datetime "reservation_date"
     t.integer "desk_id"
     t.integer "user_id"
     t.datetime "created_at", null: false

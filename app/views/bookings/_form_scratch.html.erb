@@ -1,0 +1,14 @@
+<%= form_with(model: booking, remote: true) do |form| %>
+<%#= simple_form_for Booking.new, local: true do |form| %>
+
+
+<%= form.input :reservation_start_date do %>
+  <%= form.date_field_tag :reservation_start_date, as: :date %>
+<% end %>
+
+
+<div class="actions">
+  <%= form.submit class: 'btn btn-success pull-right' %>
+</div>
+
+<% end %>

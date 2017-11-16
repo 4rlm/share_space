@@ -8,8 +8,15 @@ class SpacesController < ApplicationController
   def index
     @spaces = Space.all
 
+    # @q = Space.ransack(params[:q])
+    # @spaces = @q.result(distinct: true).includes(:address)
+
     @q = Space.ransack(params[:q])
-    @spaces = @q.result.includes(:addresses)
+    @spaces = @q.result.includes(:address, :desks, :bookings)
+
+
+    # @q = Space.ransack(params[:q])
+    # @spaces = @q.result.includes(:addresses)
     # @spaces = @q.result(distinct: true).includes(:address, :desk)
     # binding.pry
 
@@ -23,11 +30,6 @@ class SpacesController < ApplicationController
 
     # @search = Space.search(params[:q])
     # @spaces = @search.result
-
-    # @q = Space.ransack(params[:q])
-    # # @spaces = @q.result.includes(:addresses)
-    # @spaces = @q.result(distinct: true).includes(:address)
-    # # @q.build_condition
 
     # or use `to_a.uniq` to remove duplicates (can also be done in the view):
     # @people = @q.result.includes(:articles).page(params[:page]).to_a.uniq

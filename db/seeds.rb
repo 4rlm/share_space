@@ -85,27 +85,27 @@ end
 end
 
 #Create bookings
-3.times do
-  Booking.create({start_date: (Date.today + 2).to_datetime,end_date:  (Date.today + 5).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
-  Booking.create({start_date: (Date.today + 6).to_datetime,end_date:  (Date.today + 8).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
-  Booking.create({start_date: (Date.today + 9).to_datetime,end_date:  (Date.today + 14).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
-  Booking.create({start_date: (Date.today + 15).to_datetime,end_date:  (Date.today + 17).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
-  Booking.create({start_date: (Date.today + 18).to_datetime,end_date:  (Date.today + 26).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
-  Booking.create({start_date: (Date.today + 27).to_datetime,end_date:  (Date.today + 31).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
-  Booking.create({start_date: (Date.today + 32).to_datetime,end_date:  (Date.today + 39).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
-  Booking.create({start_date: (Date.today + 40).to_datetime,end_date:  (Date.today + 45).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
-  Booking.create({start_date: (Date.today + 46).to_datetime,end_date:  (Date.today + 60).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
-  Booking.create({start_date: (Date.today + 61).to_datetime,end_date:  (Date.today + 65).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
-  Booking.create({start_date: (Date.today + 66).to_datetime,end_date:  (Date.today + 70).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
-  Booking.create({start_date: (Date.today + 71).to_datetime,end_date:  (Date.today + 73).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
-  Booking.create({start_date: (Date.today + 74).to_datetime,end_date:  (Date.today + 78).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
-  Booking.create({start_date: (Date.today + 79).to_datetime,end_date:  (Date.today + 80).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
-  Booking.create({start_date: (Date.today + 81).to_datetime,end_date:  (Date.today + 88).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
-  Booking.create({start_date: (Date.today + 89).to_datetime,end_date:  (Date.today + 93).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
-  Booking.create({start_date: (Date.today + 94).to_datetime,end_date:  (Date.today + 97).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
-  Booking.create({start_date: (Date.today + 98).to_datetime,end_date:  (Date.today + 102).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
-  Booking.create({start_date: (Date.today + 103).to_datetime,end_date:  (Date.today + 105).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
-end
+# 3.times do
+#   Booking.create({start_date: (Date.today + 2).to_datetime,end_date:  (Date.today + 5).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
+#   Booking.create({start_date: (Date.today + 6).to_datetime,end_date:  (Date.today + 8).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
+#   Booking.create({start_date: (Date.today + 9).to_datetime,end_date:  (Date.today + 14).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
+#   Booking.create({start_date: (Date.today + 15).to_datetime,end_date:  (Date.today + 17).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
+#   Booking.create({start_date: (Date.today + 18).to_datetime,end_date:  (Date.today + 26).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
+#   Booking.create({start_date: (Date.today + 27).to_datetime,end_date:  (Date.today + 31).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
+#   Booking.create({start_date: (Date.today + 32).to_datetime,end_date:  (Date.today + 39).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
+#   Booking.create({start_date: (Date.today + 40).to_datetime,end_date:  (Date.today + 45).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
+#   Booking.create({start_date: (Date.today + 46).to_datetime,end_date:  (Date.today + 60).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
+#   Booking.create({start_date: (Date.today + 61).to_datetime,end_date:  (Date.today + 65).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
+#   Booking.create({start_date: (Date.today + 66).to_datetime,end_date:  (Date.today + 70).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
+#   Booking.create({start_date: (Date.today + 71).to_datetime,end_date:  (Date.today + 73).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
+#   Booking.create({start_date: (Date.today + 74).to_datetime,end_date:  (Date.today + 78).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
+#   Booking.create({start_date: (Date.today + 79).to_datetime,end_date:  (Date.today + 80).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
+#   Booking.create({start_date: (Date.today + 81).to_datetime,end_date:  (Date.today + 88).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
+#   Booking.create({start_date: (Date.today + 89).to_datetime,end_date:  (Date.today + 93).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
+#   Booking.create({start_date: (Date.today + 94).to_datetime,end_date:  (Date.today + 97).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
+#   Booking.create({start_date: (Date.today + 98).to_datetime,end_date:  (Date.today + 102).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
+#   Booking.create({start_date: (Date.today + 103).to_datetime,end_date:  (Date.today + 105).to_datetime, desk_id: Desk.all.sample.id,  user_id: User.all.sample.id})
+# end
 
 
 ## == AUSTIN ADDRESSES ==
