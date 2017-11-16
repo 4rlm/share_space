@@ -6,20 +6,20 @@
         <h4><%= link_to user.username.capitalize, user %></h4>
           <p class="text-muted">Local Host</p>
           <p class="text-muted"><%= user.email %></p>
-          <ul class="list-inline social-buttons">
+          <ul class="list-inline buttons">
             <li class="list-inline-item">
               <%= link_to edit_user_path do %>
-              <%= icon('user')%>
+              <%= "Edit your profile |" %>
               </a>
             </li>
             <li class="list-inline-item">
               <%= link_to user, remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
-              <%= icon('trash') %>
+              <%= "delete your account | " %>
               </a>
             </li>
-            <li class="list-inline-item">
+            <li class="list-inline-item button">
               <%= link_to new_space_path do %>
-              <%= icon('pencil') %>
+              <%="List a Space" %>
               </a>
             </li>
           </ul>
