@@ -54,7 +54,7 @@ iframe {
 
 // Styling for the newSpace section
 section#newSpace {
-    background-color: #98ced7;
+    background-color: #FCF9F9;
     // background-image: url('../img/map-image.png');
     background-repeat: no-repeat;
     background-position: center;
@@ -65,8 +65,13 @@ section#newSpace {
       textarea {
         padding: 20px;
       }
+
+      .btn-primary {
+        background-color: #98ced7c4 !important;
+      }
       input.form-control {
         height: auto;
+        padding: 8px;
       }
       textarea.form-control {
         height: 248px;
@@ -78,4 +83,3 @@ section#newSpace {
     max-height: 350px;
     overflow: hidden;
   }
-
