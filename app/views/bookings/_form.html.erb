@@ -33,10 +33,14 @@
 </div>
 <%end%>
 
-<div class="field form-group field">
-  <%= form.label :user_id %>
-  <%= form.number_field :user_id, id: :booking_user_id, class: 'form-control' %>
-</div>
+<% if @current_user %>
+  <%= form.hidden_field :user_id, value: @current_user.id %>
+<%else%>
+  <div class="field form-group field">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id, id: :booking_user_id, class: 'form-control' %>
+  </div>
+<%end%>
 
 <div class="actions">
   <%= form.submit class: 'btn btn-success pull-right' %>
