@@ -2,6 +2,8 @@ class SpacesController < ApplicationController
   before_action :set_space, only: [:show, :edit, :update, :destroy]
   skip_before_action :require_login, only: [:index, :show]
 
+  # @@search_results = []
+
 
   # GET /spaces
   # GET /spaces.json
@@ -10,9 +12,15 @@ class SpacesController < ApplicationController
 
     # @q = Space.ransack(params[:q])
     # @spaces = @q.result(distinct: true).includes(:address)
-
+    @original_q = params[:q]
     @q = Space.ransack(params[:q])
+    # @spaces = @q.result.includes(:address, :desks, :bookings)
     @spaces = @q.result.includes(:address, :desks, :bookings)
+
+    # @@search_results = @spaces
+
+    # binding.pry
+
 
 
     # @q = Space.ransack(params[:q])
@@ -41,7 +49,7 @@ class SpacesController < ApplicationController
   def show
     # @address = Address.find_by(space_id: @space.id)
     # @desks = Desk.where(space_id: @space.id)
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.js # show.js.erb

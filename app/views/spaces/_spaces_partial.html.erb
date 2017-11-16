@@ -1,9 +1,10 @@
 <div class="row">
-  <%#= render 'spaces/search_form_partial', spaces: @spaces %>
+  <%= render 'spaces/search_form_partial', spaces: @spaces %>
 </div>
 
 <section class="bg-light" id="portfolio">
   <div class="row">
+
     <% @spaces.each do |space| %>
 
         <div class="col-md-4 col-sm-6 portfolio-item">
@@ -33,8 +34,9 @@
           </a>
 
           <div class="portfolio-caption">
-            <h4><%= link_to space.name, space %></h4>
-            <%#= binding.pry %>
+            <!-- <h4><%#= link_to space.name, space_path(id: space.id, q: @original_q.to_unsafe_h ) %></h4> -->
+            <h4><%= link_to space.name, space_path(space) %></h4>
+
             <% if space.address %>
               <p class="text-muted"><%= space.address.street %></p>
               <% else %>

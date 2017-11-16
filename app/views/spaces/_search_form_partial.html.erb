@@ -6,15 +6,27 @@
   <!-- </div> -->
 
   <div class="field form-group field">
-    <%= f.label :address_street_cont %>
-    <%= f.search_field :address_street_cont, id: :address_street, class: 'form-control' %>
+    <%= f.label :address_city_cont %>
+    <%= f.search_field :address_city_cont, id: :address_city, class: 'form-control' %>
   </div>
-
 
   <div class="field form-group field">
-    <%= f.label :address_full_address_cont %>
-    <%= f.search_field :address_full_address_cont, id: :address_full_address, class: 'form-control' %>
+    <%= f.label :bookings_reservation_date_gteq_blank %>
+    <%= f.date_field :bookings_reservation_date_gteq, id: :bookings_reservation_date_gteq, class: 'form-control'  %>
   </div>
+
+  <div class="field form-group field">
+    <%= f.label :bookings_reservation_date_lteq_blank %>
+    <%= f.date_field :bookings_reservation_date_lteq, id: :bookings_reservation_date_lteq, class: 'form-control'  %>
+  </div>
+
+
+
+
+  <!-- <div class="field form-group field"> -->
+    <%#= f.label :address_full_address_cont %>
+    <%#= f.search_field :address_full_address_cont, id: :address_full_address, class: 'form-control' %>
+  <!-- </div> -->
 
   <!-- <div class="field form-group field"> -->
     <!-- <%#= f.label :desks_price_cont %> -->
