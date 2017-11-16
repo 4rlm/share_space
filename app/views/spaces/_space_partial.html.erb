@@ -7,14 +7,14 @@
       <div id="carouselExampleControls" class="carousel slide " data-ride="carousel">
         <div class="carousel-inner" role="listbox">
           <div class="carousel-item active">
-            <% if @photos %>
+            <% if @photos && @photos.count > 0 %>
               <%= image_tag @photos.first.image %>
             <% else %>
               <%= image_tag "office13.jpg" || "office14.jpg", class: "default-image" %>
             <% end %>
           </div>
 
-          <% if @photos %>
+          <% if @photos && @photos.count > 0 %>
             <% @photos[1..-1].each do |photo| %>
               <div class="carousel-item">
                 <%= image_tag photo.image %>
