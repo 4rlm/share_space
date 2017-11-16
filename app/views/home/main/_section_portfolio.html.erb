@@ -3,14 +3,14 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
-        <h2 class="section-heading text-uppercase">Top Flexible Office Space Cities</h2>
+        <h2 class="section-heading text-uppercase">Highest Ranked Office Spaces</h2>
         <h3 class="section-subheading text-muted">244 Office Locations | 58 Cities</h3>
       </div>
     </div>
   <div class="row">
   <% @spaces.each do |space| %>
       <div class="col-md-4 col-sm-6 portfolio-item">
-        <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+        <a class="portfolio-link" data-toggle="modal" href="#portfolioModal<%= space.id %>">
           <div class="portfolio-hover">
             <div class="portfolio-hover-content">
               <i class="fa fa-plus fa-3x"></i>
