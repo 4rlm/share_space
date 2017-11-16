@@ -59,7 +59,7 @@
         <div class="">
           <% if @space.amenities.count > 0 %>
           <% @space_amenities = @space.amenities %>
-          <%= render 'space_amenities/space_amenities_partial', space_amenities: @space_amenities %>
+          <p><%= render 'space_amenities/space_amenities_partial', space_amenities: @space_amenities %></p>
           <% end %>
         </div>
         <hr>
