@@ -13,3 +13,4 @@ class Photo < ApplicationRecord
   size: { in: 0..500.kilobytes }
 
 end
+
