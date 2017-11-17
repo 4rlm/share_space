@@ -3,7 +3,7 @@ class Photo < ApplicationRecord
   # belongs_to :space
 
   has_attached_file :image,
-  styles: { thumb: ["400x250#", :jpg], original: ['400x250>', :jpg] },
+  styles: { thumb: ["400x250#", :jpg], original: ['1400>', :jpg] },
   convert_options: { thumb: "-quality 75 -strip", original: "-quality 85 -strip" }
 
   # has_attached_file :image, url: "/system/:hash.:extension", hash_secret: "abc123"

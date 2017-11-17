@@ -8,7 +8,7 @@
       </div>
     </div>
   <div class="row">
-  <% @spaces.each do |space| %>
+  <% @spaces.each do |space, index| %>
       <div class="col-md-4 col-sm-6 portfolio-item">
         <a class="portfolio-link" data-toggle="modal" href="#portfolioModal<%= space.id %>">
           <div class="portfolio-hover">
@@ -16,7 +16,7 @@
               <i class="fa fa-plus fa-3x"></i>
             </div>
           </div>
-          <img class="img-fluid" src="https://picture.liquidspace.com/Index/60649c70-c0ce-445f-aee3-43fdce3988fd?emptyImageUrl=https:%2f%2fcontent.liquidspace.com%2fImages%2fliquid-holder.jpg%3fv%3d-73115844&etag=piQl/jN4q2OvYPjWs+SPTg==s" alt="">
+          <img class="img-fluid" src="<%= @images.pop %>" alt="">
         </a>
         <div class="portfolio-caption">
           <h4><%= link_to space.name, space %></h4>
