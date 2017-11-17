@@ -77,7 +77,7 @@
 
           <h4> Desks available in this space </h4>
           <h5> <%= @space.desks.length %></h4>
-            <%if @current_user %>
+            <%if @current_user && @space.desks.count > 0%>
               <%= render 'bookings/add_booking_modal', booking: Booking.new %>
             <%end%>
           <div id="add-desks"> <!-- ADD DESK MODAL -->
