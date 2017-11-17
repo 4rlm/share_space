@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   # get 'profile/:id', to: 'users#show', as: 'tomato'
 
+  get 'search_spaces', to: 'spaces#search', as: 'search_spaces'
+
   get 'home/index'
   root :to => "home#index"
 

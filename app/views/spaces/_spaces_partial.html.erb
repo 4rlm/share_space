@@ -1,4 +1,9 @@
 <section class="bg-light" id="portfolio">
+
+  <div class="row">
+    <%= render partial: 'spaces/pg_search_partial' %>
+  </div>
+
   <div class="row">
     <% @spaces.each do |space| %>
 
@@ -50,14 +55,19 @@
   <%#= binding.pry %>
 
   <div class="container">
-    <h4>Dynamic Map section</h4>
-    <p>Pins of all Addresses returned in search.</p>
+    <% if @addresses.present? %>
 
-    <div class="col-md-6">
-      <div class="row">
-        <%= render 'addresses/dynamic_map_partial', addresses: @addresses %>
+      <h4>Dynamic Map section</h4>
+      <p>Pins of all Addresses returned in search.</p>
+
+      <div class="col-md-6">
+        <div class="row">
+          <%= render 'addresses/dynamic_map_partial', addresses: @addresses %>
+        </div>
       </div>
-    </div>
+
+    <% end %>
+
   </div>
 
 </section>

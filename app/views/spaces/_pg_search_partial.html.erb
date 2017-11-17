@@ -1,0 +1,9 @@
+<%= form_tag spaces_path, method: :get, class: 'form-inline' do %>
+  <p>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search Spaces", name: nil %>
+  </p>
+<% end %>
+
+
+<%#= render partial: 'spaces/pg_search_partial' %>

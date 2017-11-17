@@ -1,23 +1,37 @@
 class SpacesController < ApplicationController
   before_action :set_space, only: [:show, :edit, :update, :destroy]
-  skip_before_action :require_login, only: [:index, :show]
+  skip_before_action :require_login, only: [:index, :search, :show]
 
 
   # GET /spaces
   # GET /spaces.json
   def index
-    @spaces = Space.all
+    # @spaces = Space.all
 
     # @search = Space.search(params[:q])
     # @spaces = @search.result
 
-    @q = Space.ransack(params[:q])
+    # @q = Space.ransack(params[:q])
     # @spaces = @q.result.includes(:addresses)
-    @spaces = @q.result(distinct: true).includes(:address)
+    # @spaces = @q.result(distinct: true).includes(:address)
     # @q.build_condition
 
     # or use `to_a.uniq` to remove duplicates (can also be done in the view):
     # @people = @q.result.includes(:articles).page(params[:page]).to_a.uniq
+
+
+    if params[:query].present?
+      @spaces = Space.text_search(params[:query])
+    else
+      @spaces = Space.all
+    end
+
+    # binding.pry
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
 
   end
 
