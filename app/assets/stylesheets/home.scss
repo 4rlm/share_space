@@ -51,6 +51,7 @@ h3.section-subheading {
 .cta {
   background-color: #98ced7c4 !important;
 }
+
 .btn-primary:hover {
   background-color: #F0B67F !important;
 }
@@ -97,5 +98,10 @@ a {
    &:hover {
     color: #F0B67F; 
   }
+}
+
+input.cta {
+  display: block;
+  margin: 20px auto;
 }
 @import "theme/agency.scss"; // adam replaced agency.min with this, so each theme scss file can be compiled properly.

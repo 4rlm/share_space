@@ -1,7 +1,7 @@
-<%= form_tag spaces_path, method: :get, class: 'form-inline' do %>
+<%= form_tag spaces_path, method: :get, class: 'form-block' do %>
   <p>
     <%= text_field_tag :query, params[:query] %>
-    <%= submit_tag "Search Spaces", name: nil %>
+    <%= submit_tag "Get Started", name: nil, class: "cta btn btn-primary btn-xl text-uppercase js-scroll-trigger"  %>
   </p>
 <% end %>
 
